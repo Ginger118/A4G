@@ -1,0 +1,112 @@
+[
+  {
+    "path": "src/backend/app/memory.py",
+    "symbol": "estimate",
+    "line": 8
+  },
+  {
+    "path": "src/backend/app/memory.py",
+    "symbol": "select_context",
+    "line": 11
+  },
+  {
+    "path": "src/backend/app/markdown_chunks.py",
+    "symbol": "split_markdown",
+    "line": 7
+  },
+  {
+    "path": "src/backend/app/streaming.py",
+    "symbol": "encode",
+    "line": 18
+  },
+  {
+    "path": "src/backend/app/streaming.py",
+    "symbol": "chat_events",
+    "line": 20
+  },
+  {
+    "path": "src/backend/app/streaming.py",
+    "symbol": "build_stream_router",
+    "line": 60
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "embed",
+    "line": 24
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "chunk",
+    "line": 39
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "_documents",
+    "line": 41
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "publish_knowledge",
+    "line": 53
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "add_document",
+    "line": 76
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "vector_store_label",
+    "line": 96
+  },
+  {
+    "path": "src/backend/app/rag.py",
+    "symbol": "search",
+    "line": 99
+  },
+  {
+    "path": "src/backend/app/upstream/intent_chain.py",
+    "symbol": "classify_intent",
+    "line": 10
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "parse_intent",
+    "line": 11
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "confirm_entities",
+    "line": 29
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "collect_missing_fields",
+    "line": 38
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "retrieve_evidence",
+    "line": 50
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "clarify",
+    "line": 57
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "compose_response",
+    "line": 60
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "finalize_contract",
+    "line": 82
+  },
+  {
+    "path": "src/backend/app/upstream/graph.py",
+    "symbol": "build_upstream_graph",
+    "line": 93
+  }
+]

@@ -1,0 +1,16 @@
+[project]
+name = "a4g"
+version = "0.6.0"
+description = "序流：电力知识、材料理解与上游任务草案"
+requires-python = ">=3.12,<3.13"
+dynamic = ["dependencies"]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+where = ["src/backend"]
+
+[project.optional-dependencies]
+enterprise = ["pymilvus>=2.6,<2.7", "minio>=7.2,<8"]

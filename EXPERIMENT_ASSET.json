@@ -1,0 +1,12 @@
+{
+  "title": "序流 / A4G v0.6课程基座",
+  "group": "应用与课程",
+  "kind": "系统迭代",
+  "date": "2026-11-16",
+  "purpose": "LCEL结构化意图、普通聊天完整问答预算、新MD标题与原文定位；54项回归和新真实模型链路验收",
+  "entry": "docs/精简优化/系统架构图.html",
+  "evidence": "docs/精简优化/项目技术栈更新_缩限版.pdf",
+  "work": "/Users/zz/Desktop/A4G",
+  "command": "uv run --locked --extra enterprise python run.py --course --use-authorized-deepseek-env",
+  "url": "http://127.0.0.1:8018/"
+}

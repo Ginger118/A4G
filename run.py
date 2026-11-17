@@ -9,7 +9,13 @@ parser=argparse.ArgumentParser(description='序流本地 Agent 工作空间')
 parser.add_argument('--port',type=int,default=8018)
 parser.add_argument('--use-authorized-deepseek-env',action='store_true',
                     help='明确授权后，复用环境中 ANTHROPIC_API_KEY；目的地址固定为 api.deepseek.com')
+parser.add_argument('--course',action='store_true',help='加载本机 .course.env，启用 MinIO、Milvus 和语义嵌入')
 args=parser.parse_args()
+if args.course:
+    from dotenv import load_dotenv
+    profile=ROOT/'.course.env'
+    if not profile.exists():parser.error('请先运行 scripts/course_stack.py init 和 up')
+    load_dotenv(profile,override=True)
 if args.use_authorized_deepseek_env:
     if not os.environ.get('ANTHROPIC_API_KEY'):
         parser.error('现有环境未包含可复用的密钥；请使用项目 .env 配置 AGENT_API_KEY')

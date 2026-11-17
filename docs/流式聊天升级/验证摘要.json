@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-13",
+  "version": "0.4.0",
+  "backend_tests": 35,
+  "frontend_protocol_checks": 3,
+  "live": {
+    "date": "2026-11-13",
+    "version": "0.4.0",
+    "data_source": "本轮新建合成教学问题、Markdown和三行CSV",
+    "chat_stream": {
+      "delta_count": 558,
+      "first_delta_seconds": 0.9106,
+      "last_delta_seconds": 5.3299,
+      "done_seconds": 5.3728,
+      "characters": 928
+    },
+    "context_followup": "passed",
+    "cancel_stops_without_done": true,
+    "upstream_stream": {
+      "delta_count": 85,
+      "first_delta_seconds": 1.6797,
+      "last_delta_seconds": 2.3173,
+      "done_seconds": 2.3291,
+      "characters": 152
+    },
+    "report_stream": {
+      "delta_count": 215,
+      "first_delta_seconds": 4.7631,
+      "last_delta_seconds": 5.8339,
+      "done_seconds": 7.2403,
+      "characters": 342
+    },
+    "three_lines_one_over_limit": true,
+    "note": "基于客户端实际接收时刻；不代表通用时延或质量成绩。"
+  },
+  "ui": {
+    "date": "2026-11-13",
+    "open": {
+      "chat": {
+        "bottom": 720,
+        "h": 662,
+        "w": 708,
+        "x": 244,
+        "y": 58
+      },
+      "input": {
+        "bottom": 720,
+        "h": 166,
+        "w": 708,
+        "x": 244,
+        "y": 554
+      },
+      "left": {
+        "bottom": 720,
+        "h": 720,
+        "w": 244,
+        "x": 0,
+        "y": 0
+      },
+      "right": {
+        "bottom": 720,
+        "h": 662,
+        "w": 328,
+        "x": 952,
+        "y": 58
+      },
+      "screen": {
+        "h": 720,
+        "w": 1280
+      }
+    },
+    "closedRightWidth": 1036,
+    "closedBothWidth": 1280,
+    "navigationPreserved": true,
+    "narrow": {
+      "chatWidth": 390,
+      "h": 844,
+      "inputBottom": 844,
+      "overflow": false,
+      "rightVisible": false,
+      "w": 390
+    },
+    "narrowDrawerOpened": true,
+    "sourceSidebarVerified": true,
+    "historyRestoreVerified": true
+  }
+}

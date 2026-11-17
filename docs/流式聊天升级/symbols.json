@@ -1,0 +1,197 @@
+[
+  {
+    "name": "ChatInput",
+    "path": "src/backend/app/streaming.py",
+    "line": 11
+  },
+  {
+    "name": "encode",
+    "path": "src/backend/app/streaming.py",
+    "line": 17
+  },
+  {
+    "name": "chat_events",
+    "path": "src/backend/app/streaming.py",
+    "line": 19
+  },
+  {
+    "name": "build_stream_router",
+    "path": "src/backend/app/streaming.py",
+    "line": 58
+  },
+  {
+    "name": "chat",
+    "path": "src/backend/app/streaming.py",
+    "line": 61
+  },
+  {
+    "name": "events",
+    "path": "src/backend/app/streaming.py",
+    "line": 73
+  },
+  {
+    "name": "generate",
+    "path": "src/backend/app/streaming.py",
+    "line": 65
+  },
+  {
+    "name": "task",
+    "path": "src/backend/app/streaming.py",
+    "line": 74
+  },
+  {
+    "name": "generate",
+    "path": "src/backend/app/streaming.py",
+    "line": 76
+  },
+  {
+    "name": "ModelUnavailable",
+    "path": "src/backend/app/llm.py",
+    "line": 5
+  },
+  {
+    "name": "completion",
+    "path": "src/backend/app/llm.py",
+    "line": 8
+  },
+  {
+    "name": "json_content",
+    "path": "src/backend/app/llm.py",
+    "line": 36
+  },
+  {
+    "name": "langchain_completion",
+    "path": "src/backend/app/llm.py",
+    "line": 42
+  },
+  {
+    "name": "stream_completion",
+    "path": "src/backend/app/llm.py",
+    "line": 72
+  },
+  {
+    "name": "parse_intent",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 11
+  },
+  {
+    "name": "confirm_entities",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 29
+  },
+  {
+    "name": "collect_missing_fields",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 38
+  },
+  {
+    "name": "retrieve_evidence",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 50
+  },
+  {
+    "name": "clarify",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 57
+  },
+  {
+    "name": "compose_response",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 60
+  },
+  {
+    "name": "finalize_contract",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 82
+  },
+  {
+    "name": "build_upstream_graph",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 93
+  },
+  {
+    "name": "upstream_events",
+    "path": "src/backend/app/upstream/service.py",
+    "line": 8
+  },
+  {
+    "name": "validate_power_csv",
+    "path": "src/backend/app/tools/power.py",
+    "line": 15
+  },
+  {
+    "name": "PowerInput",
+    "path": "src/backend/app/tools/power.py",
+    "line": 35
+  },
+  {
+    "name": "LoadingInput",
+    "path": "src/backend/app/tools/power.py",
+    "line": 38
+  },
+  {
+    "name": "PowerReportInput",
+    "path": "src/backend/app/tools/power.py",
+    "line": 41
+  },
+  {
+    "name": "read_data",
+    "path": "src/backend/app/tools/power.py",
+    "line": 46
+  },
+  {
+    "name": "inspect_power_data",
+    "path": "src/backend/app/tools/power.py",
+    "line": 52
+  },
+  {
+    "name": "analyze_line_loading",
+    "path": "src/backend/app/tools/power.py",
+    "line": 59
+  },
+  {
+    "name": "generate_power_report",
+    "path": "src/backend/app/tools/power.py",
+    "line": 77
+  },
+  {
+    "name": "build_power_registry",
+    "path": "src/backend/app/tools/power.py",
+    "line": 106
+  },
+  {
+    "name": "G",
+    "path": "src/frontend/src/components/ChatWorkspace.tsx",
+    "line": 10
+  },
+  {
+    "name": "api",
+    "path": "src/frontend/src/components/ChatWorkspace.tsx",
+    "line": 11
+  },
+  {
+    "name": "ChatWorkspace",
+    "path": "src/frontend/src/components/ChatWorkspace.tsx",
+    "line": 14
+  },
+  {
+    "name": "send",
+    "path": "src/frontend/src/components/ChatWorkspace.tsx",
+    "line": 54
+  },
+  {
+    "name": "stop",
+    "path": "src/frontend/src/components/ChatWorkspace.tsx",
+    "line": 80
+  },
+  {
+    "name": "copy",
+    "path": "src/frontend/src/components/ChatWorkspace.tsx",
+    "line": 81
+  },
+  {
+    "name": "readEventStream",
+    "path": "src/frontend/src/sse.ts",
+    "line": 3
+  }
+]

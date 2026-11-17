@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1160" viewBox="0 0 1800 1160">
+<title>01 前期思路</title>
+<rect width="100%" height="100%" fill="#F9FBFE"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="60" y="48" width="8" height="48" rx="16" fill="#245CD6" stroke="none" stroke-width="2"/>
+<rect x="690" y="490" width="420" height="164" rx="16" fill="#EAF0FF" stroke="#245CD6" stroke-width="2"/>
+<rect x="70" y="180" width="500" height="230" rx="16" fill="#FFFFFF" stroke="#245CD6" stroke-width="2"/>
+<rect x="70" y="470" width="500" height="230" rx="16" fill="#FFFFFF" stroke="#137F79" stroke-width="2"/>
+<rect x="70" y="760" width="500" height="230" rx="16" fill="#FFFFFF" stroke="#7550BC" stroke-width="2"/>
+<rect x="1230" y="180" width="500" height="230" rx="16" fill="#FFFFFF" stroke="#137F79" stroke-width="2"/>
+<rect x="1230" y="470" width="500" height="230" rx="16" fill="#FAF7FF" stroke="#7550BC" stroke-width="2" stroke-dasharray="9 7"/>
+<rect x="1230" y="760" width="500" height="230" rx="16" fill="#FFFFFF" stroke="#A96C13" stroke-width="2"/>
+<rect x="660" y="830" width="480" height="172" rx="16" fill="#F5F7FC" stroke="#D5DFEC" stroke-width="2"/>
+<polyline points="690,572 630,572 630,295 570,295" fill="none" stroke="#245CD6" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="690,572 630,572 630,585 570,585" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="690,572 630,572 630,875 570,875" fill="none" stroke="#7550BC" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1110,572 1170,572 1170,295 1230,295" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="1110,572 1170,572 1170,585 1230,585" fill="none" stroke="#7550BC" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="9 7"/>
+<polyline points="1110,572 1170,572 1170,875 1230,875" fill="none" stroke="#A96C13" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="88" y="81.03999999999999" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="#172B4D">前期思路｜先做完整 Agent，再接显式规划</text>
+<text x="88" y="126.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#526581">课程作品能够独立演示，同时保留后续课题实验的接入位置。</text>
+<text x="60" y="1128.24" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#526581">A4G  /  01     ·     2026-11-03     ·     实线：当前实现或已确定范围；虚线：后续研究设想</text>
+<text x="900.0" y="561.6400000000001" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="#245CD6">基于 LangChain 的</text>
+<text x="900.0" y="604.2" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="#245CD6">电力知识问答与辅助分析系统</text>
+<text x="900.0" y="701.23" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#526581">当前：常规 Agent 基座</text>
+<text x="900.0" y="733.15" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#526581">后续：替换规划策略做对照实验</text>
+<text x="94" y="224.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#245CD6">01 课程目标</text>
+<text x="96" y="278.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 让老师看见真实 LangChain 调用</text>
+<text x="96" y="321.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 对话、上传、切分、检索、工具调用</text>
+<text x="96" y="364.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 从输入到引用答案／报告的完整闭环</text>
+<text x="94" y="514.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#137F79">02 业务落点</text>
+<text x="96" y="568.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 以电力知识与线路表作为示例材料</text>
+<text x="96" y="611.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 代码计算负载比值，模型解释结果</text>
+<text x="96" y="654.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 无需先深入复杂电网业务</text>
+<text x="94" y="804.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#7550BC">03 技术抓手</text>
+<text x="96" y="858.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• ChatDeepSeek：对话与工具选择</text>
+<text x="96" y="901.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 递归切分 + 向量检索：支撑 RAG</text>
+<text x="96" y="944.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 前端 React；后端 FastAPI + SQLite</text>
+<text x="1254" y="224.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#137F79">04 独立完整的产品</text>
+<text x="1256" y="278.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 登录与资源隔离；多轮对话</text>
+<text x="1256" y="321.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 知识文档上传、切分预览与引用问答</text>
+<text x="1256" y="364.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 线路 CSV 分析、执行轨迹与报告</text>
+<text x="1254" y="514.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#7550BC">05 后续课题接入点</text>
+<text x="1256" y="568.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 现有 Planner 与 Executor 已分离</text>
+<text x="1256" y="611.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 待补：目标判据、动作前提与效果</text>
+<text x="1256" y="654.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 未来：显式规划 + 反馈更新 + 对照实验</text>
+<text x="1254" y="804.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#A96C13">06 控制范围</text>
+<text x="1256" y="858.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 优先讲清基础能力与真实调用链路</text>
+<text x="1256" y="901.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 当前只算给定有功限值的负载比值</text>
+<text x="1256" y="944.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#172B4D">• 暂不做潮流、N−1 或真实调度</text>
+<text x="900.0" y="878.2" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">从 A 到 B 的研究想法</text>
+<text x="900.0" y="908.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">A：当前数据、产物与执行状态</text>
+<text x="900.0" y="939.0" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">B：满足约束的一组可接受结果</text>
+<text x="900.0" y="969.4000000000001" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">先留接口，当前不实现该规划算法</text>
+</svg>

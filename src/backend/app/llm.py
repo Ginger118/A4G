@@ -67,3 +67,23 @@ async def langchain_completion(messages, tools=None, json_mode=False, max_tokens
         raise ModelUnavailable('模型连接超时或网络不可达。请稍后重试。') from exc
     except (KeyError,ValueError,TypeError) as exc:
         raise ModelUnavailable('LangChain 模型返回格式不符合接口约定。') from exc
+
+
+async def stream_completion(messages, max_tokens=2600):
+    """Yield visible content directly from ChatDeepSeek.astream, never reasoning."""
+    if not settings.live:raise ModelUnavailable('未配置真实模型，请使用明确标记的规则演示')
+    from langchain_deepseek import ChatDeepSeek
+    from contextlib import aclosing
+    import openai
+    try:
+        model=ChatDeepSeek(model=settings.model,api_key=settings.api_key,api_base=settings.api_base,
+            temperature=0.2,max_tokens=max_tokens,timeout=100,max_retries=0,
+            extra_body={'thinking':{'type':'disabled'}})
+        async with aclosing(model.astream(messages)) as chunks:
+            async for chunk in chunks:
+                text=chunk.content if isinstance(chunk.content,str) else ''.join(p.get('text','') for p in chunk.content if isinstance(p,dict) and p.get('type')=='text')
+                if text:yield text
+    except openai.APIStatusError as exc:
+        raise ModelUnavailable(f'模型服务返回 HTTP {exc.status_code}，请检查配置与额度。') from exc
+    except (openai.APIConnectionError,openai.APITimeoutError) as exc:
+        raise ModelUnavailable('模型连接超时或网络不可达。请稍后重试。') from exc

@@ -1,0 +1,64 @@
+{
+  "sources": [
+    [
+      "S1",
+      "课程清单：本次附件，46个有道链接；开头“16条”为历史计数，按主题+编号识别重复编号。",
+      "用户提供；标题范围，非全部原文已读"
+    ],
+    [
+      "S2",
+      "聊天“讯飞每日langchain”及桌面langchain/README.md、复习.md。",
+      "已读取聊天近期记录；未完整回溯所有历史轮次"
+    ],
+    [
+      "S3",
+      "DAY7/8/9/10/12/14 PROJECT_STATE与代码；outputs/day7、day8、day10、day12、day14/references。",
+      "静态核对历史实现/归档原文；不是本轮重跑课程"
+    ],
+    [
+      "S4",
+      "A4G：PROJECT_STATE.md；documents.py、rag.py、embeddings.py、streaming.py、upstream/graph.py、service.py。",
+      "v0.5代码静态核对；43+3为既有验收"
+    ],
+    [
+      "S5",
+      "LangChain短期记忆/结构化输出/旧Memory API。",
+      "当前官方文档核验，2026-11-15"
+    ],
+    [
+      "S6",
+      "Ragas指标、Milvus混合检索、TEI模型/硬件支持。",
+      "当前官方文档核验，2026-11-15"
+    ]
+  ],
+  "official_links": [
+    [
+      "LangChain短期记忆",
+      "https://docs.langchain.com/oss/python/langchain/short-term-memory"
+    ],
+    [
+      "结构化输出",
+      "https://docs.langchain.com/oss/python/langchain/structured-output"
+    ],
+    [
+      "旧ConversationBufferMemory弃用说明",
+      "https://reference.langchain.com/python/langchain-classic/memory/buffer/ConversationBufferMemory"
+    ],
+    [
+      "Ragas指标",
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/"
+    ],
+    [
+      "Milvus混合检索（按项目2.6版核验API）",
+      "https://milvus.io/docs/v2.6.x/multi-vector-search.md"
+    ],
+    [
+      "TEI模型与硬件",
+      "https://huggingface.co/docs/text-embeddings-inference/supported_models"
+    ]
+  ],
+  "course_root": "/Users/zz/Desktop/langchain",
+  "application_root": "/Users/zz/Desktop/A4G",
+  "thread": "讯飞每日langchain",
+  "type": "静态调查与选型建议"
+}

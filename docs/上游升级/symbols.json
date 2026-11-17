@@ -1,0 +1,422 @@
+[
+  {
+    "name": "upstream_events",
+    "path": "src/backend/app/upstream/service.py",
+    "line": 8,
+    "kind": "函数"
+  },
+  {
+    "name": "validate_contract",
+    "path": "src/backend/app/upstream/validators.py",
+    "line": 9,
+    "kind": "函数"
+  },
+  {
+    "name": "parse_intent",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 11,
+    "kind": "函数"
+  },
+  {
+    "name": "confirm_entities",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 29,
+    "kind": "函数"
+  },
+  {
+    "name": "collect_missing_fields",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 38,
+    "kind": "函数"
+  },
+  {
+    "name": "retrieve_evidence",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 50,
+    "kind": "函数"
+  },
+  {
+    "name": "clarify",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 57,
+    "kind": "函数"
+  },
+  {
+    "name": "compose_response",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 60,
+    "kind": "函数"
+  },
+  {
+    "name": "finalize_contract",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 78,
+    "kind": "函数"
+  },
+  {
+    "name": "build_upstream_graph",
+    "path": "src/backend/app/upstream/graph.py",
+    "line": 89,
+    "kind": "函数"
+  },
+  {
+    "name": "StrictModel",
+    "path": "src/backend/app/upstream/schemas.py",
+    "line": 5,
+    "kind": "类"
+  },
+  {
+    "name": "UpstreamRequest",
+    "path": "src/backend/app/upstream/schemas.py",
+    "line": 8,
+    "kind": "类"
+  },
+  {
+    "name": "Intent",
+    "path": "src/backend/app/upstream/schemas.py",
+    "line": 17,
+    "kind": "类"
+  },
+  {
+    "name": "PlanStep",
+    "path": "src/backend/app/upstream/schemas.py",
+    "line": 22,
+    "kind": "类"
+  },
+  {
+    "name": "TaskContract",
+    "path": "src/backend/app/upstream/schemas.py",
+    "line": 30,
+    "kind": "类"
+  },
+  {
+    "name": "UpstreamState",
+    "path": "src/backend/app/upstream/schemas.py",
+    "line": 44,
+    "kind": "类"
+  },
+  {
+    "name": "build_router",
+    "path": "src/backend/app/upstream/routes.py",
+    "line": 9,
+    "kind": "函数"
+  },
+  {
+    "name": "sessions",
+    "path": "src/backend/app/upstream/routes.py",
+    "line": 12,
+    "kind": "函数"
+  },
+  {
+    "name": "stream",
+    "path": "src/backend/app/upstream/routes.py",
+    "line": 18,
+    "kind": "函数"
+  },
+  {
+    "name": "generate",
+    "path": "src/backend/app/upstream/routes.py",
+    "line": 25,
+    "kind": "函数"
+  },
+  {
+    "name": "OriginalStore",
+    "path": "src/backend/app/documents.py",
+    "line": 8,
+    "kind": "类"
+  },
+  {
+    "name": "ingest_pdf",
+    "path": "src/backend/app/documents.py",
+    "line": 31,
+    "kind": "函数"
+  },
+  {
+    "name": "__init__",
+    "path": "src/backend/app/documents.py",
+    "line": 9,
+    "kind": "函数"
+  },
+  {
+    "name": "put",
+    "path": "src/backend/app/documents.py",
+    "line": 11,
+    "kind": "函数"
+  },
+  {
+    "name": "get",
+    "path": "src/backend/app/documents.py",
+    "line": 20,
+    "kind": "函数"
+  },
+  {
+    "name": "client",
+    "path": "src/backend/app/documents.py",
+    "line": 26,
+    "kind": "函数"
+  },
+  {
+    "name": "embed",
+    "path": "src/backend/app/rag.py",
+    "line": 24,
+    "kind": "函数"
+  },
+  {
+    "name": "LocalCharacterEmbeddings",
+    "path": "src/backend/app/rag.py",
+    "line": 33,
+    "kind": "类"
+  },
+  {
+    "name": "chunk",
+    "path": "src/backend/app/rag.py",
+    "line": 39,
+    "kind": "函数"
+  },
+  {
+    "name": "add_document",
+    "path": "src/backend/app/rag.py",
+    "line": 41,
+    "kind": "函数"
+  },
+  {
+    "name": "vector_store_label",
+    "path": "src/backend/app/rag.py",
+    "line": 51,
+    "kind": "函数"
+  },
+  {
+    "name": "search",
+    "path": "src/backend/app/rag.py",
+    "line": 54,
+    "kind": "函数"
+  },
+  {
+    "name": "embed_query",
+    "path": "src/backend/app/rag.py",
+    "line": 34,
+    "kind": "函数"
+  },
+  {
+    "name": "embed_documents",
+    "path": "src/backend/app/rag.py",
+    "line": 37,
+    "kind": "函数"
+  },
+  {
+    "name": "search_vectors",
+    "path": "src/backend/app/repositories/milvus.py",
+    "line": 7,
+    "kind": "函数"
+  },
+  {
+    "name": "lifespan",
+    "path": "src/backend/app/main.py",
+    "line": 27,
+    "kind": "函数"
+  },
+  {
+    "name": "headers",
+    "path": "src/backend/app/main.py",
+    "line": 37,
+    "kind": "函数"
+  },
+  {
+    "name": "actor",
+    "path": "src/backend/app/main.py",
+    "line": 45,
+    "kind": "函数"
+  },
+  {
+    "name": "Body",
+    "path": "src/backend/app/main.py",
+    "line": 52,
+    "kind": "类"
+  },
+  {
+    "name": "Login",
+    "path": "src/backend/app/main.py",
+    "line": 55,
+    "kind": "类"
+  },
+  {
+    "name": "login",
+    "path": "src/backend/app/main.py",
+    "line": 62,
+    "kind": "函数"
+  },
+  {
+    "name": "logout",
+    "path": "src/backend/app/main.py",
+    "line": 77,
+    "kind": "函数"
+  },
+  {
+    "name": "me",
+    "path": "src/backend/app/main.py",
+    "line": 83,
+    "kind": "函数"
+  },
+  {
+    "name": "health",
+    "path": "src/backend/app/main.py",
+    "line": 86,
+    "kind": "函数"
+  },
+  {
+    "name": "configuration",
+    "path": "src/backend/app/main.py",
+    "line": 89,
+    "kind": "函数"
+  },
+  {
+    "name": "assets",
+    "path": "src/backend/app/main.py",
+    "line": 107,
+    "kind": "函数"
+  },
+  {
+    "name": "Upload",
+    "path": "src/backend/app/main.py",
+    "line": 110,
+    "kind": "类"
+  },
+  {
+    "name": "upload",
+    "path": "src/backend/app/main.py",
+    "line": 116,
+    "kind": "函数"
+  },
+  {
+    "name": "owned_asset",
+    "path": "src/backend/app/main.py",
+    "line": 132,
+    "kind": "函数"
+  },
+  {
+    "name": "asset_detail",
+    "path": "src/backend/app/main.py",
+    "line": 137,
+    "kind": "函数"
+  },
+  {
+    "name": "download",
+    "path": "src/backend/app/main.py",
+    "line": 142,
+    "kind": "函数"
+  },
+  {
+    "name": "seed",
+    "path": "src/backend/app/main.py",
+    "line": 148,
+    "kind": "函数"
+  },
+  {
+    "name": "TaskInput",
+    "path": "src/backend/app/main.py",
+    "line": 163,
+    "kind": "类"
+  },
+  {
+    "name": "serialize_task",
+    "path": "src/backend/app/main.py",
+    "line": 170,
+    "kind": "函数"
+  },
+  {
+    "name": "create_task",
+    "path": "src/backend/app/main.py",
+    "line": 177,
+    "kind": "函数"
+  },
+  {
+    "name": "tasks",
+    "path": "src/backend/app/main.py",
+    "line": 203,
+    "kind": "函数"
+  },
+  {
+    "name": "conversation",
+    "path": "src/backend/app/main.py",
+    "line": 207,
+    "kind": "函数"
+  },
+  {
+    "name": "owned_task",
+    "path": "src/backend/app/main.py",
+    "line": 210,
+    "kind": "函数"
+  },
+  {
+    "name": "task_detail",
+    "path": "src/backend/app/main.py",
+    "line": 216,
+    "kind": "函数"
+  },
+  {
+    "name": "cancel",
+    "path": "src/backend/app/main.py",
+    "line": 219,
+    "kind": "函数"
+  },
+  {
+    "name": "trace",
+    "path": "src/backend/app/main.py",
+    "line": 231,
+    "kind": "函数"
+  },
+  {
+    "name": "Question",
+    "path": "src/backend/app/main.py",
+    "line": 238,
+    "kind": "类"
+  },
+  {
+    "name": "ask",
+    "path": "src/backend/app/main.py",
+    "line": 243,
+    "kind": "函数"
+  },
+  {
+    "name": "Vision",
+    "path": "src/backend/app/main.py",
+    "line": 257,
+    "kind": "类"
+  },
+  {
+    "name": "vision",
+    "path": "src/backend/app/main.py",
+    "line": 262,
+    "kind": "函数"
+  },
+  {
+    "name": "admin_summary",
+    "path": "src/backend/app/main.py",
+    "line": 280,
+    "kind": "函数"
+  },
+  {
+    "name": "PdfUpload",
+    "path": "src/backend/app/main.py",
+    "line": 288,
+    "kind": "类"
+  },
+  {
+    "name": "upload_pdf",
+    "path": "src/backend/app/main.py",
+    "line": 293,
+    "kind": "函数"
+  },
+  {
+    "name": "original_pdf",
+    "path": "src/backend/app/main.py",
+    "line": 301,
+    "kind": "函数"
+  },
+  {
+    "name": "frontend",
+    "path": "src/backend/app/main.py",
+    "line": 317,
+    "kind": "函数"
+  }
+]

@@ -22,7 +22,7 @@ async def run_task(task_id, registry):
         'goal':task['prompt'],'input_id':context.state.get('input_id'),
         'input_sha256':context.state.get('input_sha256'),
         'model_parameters':{'temperature':0.2,'thinking':'disabled'},
-        'retrieval':{'embedding':'hashed-char-2048-v1','splitter':'RecursiveCharacterTextSplitter','vector_store':'InMemoryVectorStore','chunk_size':420,'overlap':60},
+        'retrieval':{'embedding':settings.embedding_model if settings.embedding_backend=='ollama' else 'hashed-char-2048-v1','splitter':'RecursiveCharacterTextSplitter','vector_store':settings.vector_backend,'chunk_size':420,'overlap':60},
         'tools':[{'id':t.tool_id,'version':t.version,'input_schema':t.input_model.model_json_schema(),
                   'output_schema':t.output_schema,'permission':t.permission,'timeout':t.timeout} for t in context.tools]})
     failures=Counter(); used=0

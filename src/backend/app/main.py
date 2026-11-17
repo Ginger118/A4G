@@ -89,21 +89,31 @@ async def health(): return {'status':'ok','version':settings.version}
 async def configuration(user=Depends(actor)):
     from urllib.parse import urlsplit
     import importlib.metadata
+    from .embeddings import embedding_info
+    try:info=await asyncio.to_thread(embedding_info)
+    except ValueError:info={'model':settings.embedding_model,'dimensions':settings.embedding_dimensions,'semantic':settings.embedding_backend=='ollama','ready':False}
     return {'version':settings.version,'live_available':settings.live,'model':settings.model,
             'project_title':'基于 LangChain 的电力知识问答与辅助分析系统的设计与实现',
+            'product_position':'电力知识、材料理解与只读任务草案',
+            'orchestrator':'LangGraph','object_store':settings.object_backend,'upstream_available':True,
             'framework':'LangChain','framework_version':importlib.metadata.version('langchain'),
-            'model_adapter':'ChatDeepSeek','splitter':'RecursiveCharacterTextSplitter',
-            'vector_store':'InMemoryVectorStore','chunk_size':rag.CHUNK_SIZE,'chunk_overlap':rag.OVERLAP,
+            'model_adapter':'ChatDeepSeek','splitter':'RecursiveCharacterTextSplitter','markdown_splitter':'MarkdownHeaderTextSplitter + exact source offsets','chat_context_budget':settings.chat_context_budget,
+            'vector_store':'Milvus' if settings.vector_backend=='milvus' else 'InMemoryVectorStore','chunk_size':rag.CHUNK_SIZE,'chunk_overlap':rag.OVERLAP,
             'vision_model':settings.vision_model,'provider_host':urlsplit(settings.api_base).hostname,
-            'embedding':'本地中文字符向量 · 2048 维','retrieval':'字符向量余弦相似度（非预训练语义模型）',
+            'embedding':f"{info['model']} · {info['dimensions']} 维",'embedding_info':info,'retrieval':'语义向量余弦相似度' if info['semantic'] else '字符向量余弦相似度（非预训练语义模型）',
             'max_steps':settings.max_steps,'tool_timeout':settings.tool_timeout,
             'tools':[{'id':t.tool_id,'name':t.name,'description':t.description,'input_schema':t.input_model.model_json_schema(),
                       'output_schema':t.output_schema,'timeout':t.timeout,'version':t.version,
                       'preconditions':t.preconditions,'effects':t.effects} for t in registry.available_specs(user['role'])]}
 
+@app.get('/api/knowledge/status')
+async def knowledge_status(user=Depends(actor)):
+    from .course_status import inspect_stack
+    return await asyncio.to_thread(inspect_stack)
+
 @app.get('/api/assets')
 async def assets(user=Depends(actor)):
-    return [store.public_asset(r) for r in store.many("SELECT * FROM assets WHERE owner=? AND kind IN ('dataset','knowledge','report') ORDER BY created DESC",(user['id'],))]
+    return [store.public_asset(r) for r in store.many("SELECT * FROM assets WHERE owner=? AND kind IN ('dataset','knowledge','report') ORDER BY created DESC",(user['id'],)) if json.loads(r['metadata']).get('index_status')!='pending']
 
 class Upload(Body):
     name:str=Field(min_length=1,max_length=160)
@@ -123,7 +133,7 @@ async def upload(body:Upload,user=Depends(actor)):
         else:
             if not body.name.lower().endswith(('.txt','.md')): raise ValueError('知识文档支持 TXT 和 Markdown')
             if not body.content.strip(): raise ValueError('知识文档不能为空')
-            a=rag.add_document(user['id'],body.name,body.content)
+            a=await asyncio.to_thread(rag.add_document,user['id'],body.name,body.content)
         return store.public_asset(a)
     except ValueError as exc: raise HTTPException(422,str(exc))
 
@@ -154,7 +164,7 @@ async def seed(user=Depends(actor)):
         if kind=='dataset':
             content,rows=validate_power_csv(text)
             a=store.asset(user['id'],name,kind,content,{'row_count':len(rows),'columns':list(rows[0]),'domain':'power'})
-        else: a=rag.add_document(user['id'],name,text)
+        else: a=await asyncio.to_thread(rag.add_document,user['id'],name,text)
         output.append(store.public_asset(a))
     return output
 
@@ -239,7 +249,8 @@ class Question(Body):
 
 @app.post('/api/knowledge/ask')
 async def ask(body:Question,user=Depends(actor)):
-    hits=rag.search(user['id'],body.question,4)
+    try:hits=await asyncio.to_thread(rag.search,user['id'],body.question,4)
+    except ValueError as exc:raise HTTPException(503,str(exc))
     if not hits: return {'answer':'当前知识库中未找到相关依据。请导入相关材料，或补充更具体的问题。','citations':[],'usage':{},'mode':body.mode}
     usage={}
     if body.mode=='live':
@@ -279,6 +290,36 @@ async def admin_summary(user=Depends(actor)):
     if user['role']!='admin': raise HTTPException(403,'仅管理员可访问')
     return {'users':store.one('SELECT count(*) AS count FROM users')['count'],
             'tasks':store.one('SELECT count(*) AS count FROM tasks')['count']}
+
+from .upstream.routes import build_router
+app.include_router(build_router(actor))
+from .streaming import build_stream_router
+app.include_router(build_stream_router(actor))
+
+class PdfUpload(Body):
+    name: str = Field(min_length=1,max_length=160)
+    content_base64: str = Field(min_length=8,max_length=13_400_000)
+
+@app.post('/api/documents/pdf',status_code=201)
+async def upload_pdf(body:PdfUpload,user=Depends(actor)):
+    if '/' in body.name or '\\' in body.name or not body.name.lower().endswith('.pdf'):
+        raise HTTPException(422,'请使用不含目录的 PDF 文件名')
+    from .documents import ingest_pdf
+    try:return await asyncio.to_thread(ingest_pdf,user['id'],body.name,body.content_base64)
+    except ValueError as exc:raise HTTPException(422,str(exc))
+
+@app.get('/api/documents/{asset_id}/original')
+async def original_pdf(asset_id:str,user=Depends(actor)):
+    a=owned_asset(asset_id,user)
+    key=a['metadata'].get('original_key')
+    if not key:raise HTTPException(404,'此文档没有 PDF 原文件')
+    from .documents import OriginalStore
+    from urllib.parse import quote
+    backend=a['metadata'].get('object_backend','local')
+    original=OriginalStore();original.backend=backend
+    try:raw=await asyncio.to_thread(original.get,key)
+    except Exception:raise HTTPException(503,'原文件暂时不可用')
+    return Response(raw,media_type='application/pdf' if key.endswith('.pdf') else 'text/plain; charset=utf-8',headers={'Content-Disposition':"inline; filename*=UTF-8''"+quote(a['name'])})
 
 dist=settings.root/'src/frontend/dist'
 if dist.exists():

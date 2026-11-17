@@ -1,0 +1,21 @@
+html[data-theme] .account-trigger{width:100%;display:flex;align-items:center;gap:11px;border:0;border-top:1px solid var(--stroke);background:transparent;text-align:left;padding:16px 7px 9px;color:var(--fg);border-radius:8px}
+.account-trigger>span:nth-child(2){display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}.account-trigger strong{font-size:12px}.account-trigger small{font-size:10px;color:var(--fg-muted)}
+html[data-theme] .account-trigger:hover{background:var(--surface-hover)}
+.account-compact-trigger{display:grid;place-items:center;border:1px solid var(--purple-border);border-radius:50%;background:var(--purple-soft);color:var(--purple);width:34px;height:34px;font-weight:600}
+.account-panel{position:fixed;left:16px;bottom:80px;width:294px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 100px);overflow-y:auto;background:var(--surface-card);border:1px solid var(--stroke);border-radius:16px;padding:10px;box-shadow:0 14px 55px #08051055;z-index:80;color:var(--fg);font-size:12px}
+.account-panel-top{left:auto;right:16px;top:65px;bottom:auto}
+.account-heading{display:flex;gap:10px;align-items:center;padding:7px 8px 14px;border-bottom:1px solid var(--stroke);margin-bottom:7px}.account-heading>div:nth-child(2){display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}.account-heading strong{font-size:13px;overflow-wrap:anywhere}.account-heading small{color:var(--fg-muted);font-size:10px}.account-heading>button{padding:3px 8px;color:var(--fg-muted);font-size:21px;border-radius:7px}
+.account-action{display:flex;gap:10px;align-items:center;width:100%;padding:12px 10px;background:transparent;color:var(--fg);border-radius:9px;text-align:left;font-size:12px}.account-action>span:last-child{margin-left:auto;color:var(--fg-muted)}.account-action:hover,.account-heading>button:hover{background:var(--surface-hover)}
+.account-theme-row{display:flex;align-items:center;justify-content:space-between;padding:13px 10px;gap:12px}.account-theme-row>div{display:flex;flex-direction:column;gap:5px}.account-theme-row strong{font-size:12px;font-weight:500}.account-theme-row small{font-size:10px;color:var(--fg-muted)}
+.theme-switch{width:40px;min-width:40px;height:23px;border-radius:99px;background:var(--stroke);border:1px solid var(--purple-border);padding:2px;display:flex;align-items:center;transition:background .18s;box-shadow:none}
+.theme-switch[aria-checked=true]{background:var(--purple-fill)}.theme-switch>span{width:17px;height:17px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #09051233;transform:translateX(0);transition:transform .18s}.theme-switch[aria-checked=true]>span{transform:translateX(16px)}
+.theme-switch:focus-visible,.account-trigger:focus-visible,.account-compact-trigger:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+.account-model{display:flex;flex-direction:column;gap:8px;padding:12px 10px;margin:2px 0;background:var(--surface-raised);border-radius:10px}.account-model label{color:var(--fg-muted);font-size:10px}.account-model>strong{color:var(--purple);font-size:12px;overflow-wrap:anywhere}.account-model select{width:100%;min-width:0;font-size:11px;background:var(--surface-card);color:var(--fg);border:1px solid var(--stroke);border-radius:7px;padding:9px 7px}.account-model>small{color:var(--fg-muted);font-size:10px}.account-separator{border-top:1px solid var(--stroke);margin:6px 0}.account-logout{color:var(--fg-muted)}
+@media(max-width:760px){.account-panel{right:12px;left:auto;top:62px;bottom:auto;max-height:calc(100dvh - 80px)}}
+@media(prefers-reduced-motion:reduce){.theme-switch,.theme-switch>span{transition:none}}
+/* Keep the account entry inside the viewport even with a long recent-task list. */
+.app-shell .sidebar>*{flex-shrink:0}
+.app-shell .sidebar .recent{flex:1 1 auto;min-height:0;overflow-y:auto;scrollbar-width:thin;margin-top:22px}
+.app-shell .sidebar .sidebar-bottom{flex-shrink:0;padding-top:12px;margin-top:0}
+.app-shell .sidebar .local-note{margin-bottom:8px}
+.app-shell .sidebar .new-task{min-height:38px;height:38px;margin-top:25px;margin-bottom:22px}

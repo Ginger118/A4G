@@ -67,3 +67,6 @@ htmlcov/
 ._*
 *.swp
 *.swo
+
+# Private course service credentials
+.course.env

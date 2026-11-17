@@ -1,4 +1,74 @@
+# 当前版本v0.6：三项低前置条件优化
+
+本轮仅完成LCEL结构化意图/一次格式补试、普通流式聊天完整问答与估算预算、新MD标题元数据及原文offset校验。无需新增依赖/服务/模型，现有课程配置与三栏UI沿用。
+
+交付：`docs/精简优化/项目技术栈更新_缩限版.pdf`、操作手册、系统架构图.html。启动仍为`uv run --locked --extra enterprise python run.py --course --use-authorized-deepseek-env`。旧资料不自动重切，OCR/自动摘要/RAGAS/混合检索/研究规划未接入。下方旧版本文字按历史解释。
+
+---
+
+# 当前版本 v0.5：课程存储与语义检索
+
+保留序流三栏流式界面和正式名称。课程配置采用 **MinIO + Ollama EmbeddingGemma + Milvus**，SQLite 保存应用记录与来源元数据；通过 `--course` 显式启用。下方 v0.4 与更早文字是历史说明，旧“尚未联调”结论以本轮验证报告为准。
+
+```bash
+uv sync --locked --extra enterprise
+python3 scripts/course_stack.py init
+python3 scripts/course_stack.py up
+ollama pull embeddinggemma:300m
+uv run --locked --extra enterprise python scripts/migrate_course_knowledge.py
+uv run --locked --extra enterprise python run.py --course --use-authorized-deepseek-env
+```
+
+详细说明、课程对应表、验证边界与源码架构见 `docs/课程栈升级/操作手册.md`、`验证报告.pdf`、`系统架构图.html`。常规无课程配置启动仍保留字符向量/本地存储基线；不要将两种配置的实测结果混用。`.course.env` 包含随机生成的本机存储凭据，已忽略，不提交。
+
+---
+
 # 序流 电力知识问答与辅助分析系统
+
+正式题目保持《基于 LangChain 的电力知识问答与辅助分析系统的设计与实现》。
+
+## v0.4.0 当前版本 · 2026-11-13
+
+工作台改为左导航、中间聊天记录和底部输入、可独立收起的右侧详情。任务、来源、草案和材料移到右栏。普通对话、资料回答与工具报告的模型正文使用真实增量输出，保留停止生成、多轮与历史回看；不把生成完的文本用定时器伪装为流式。
+
+```sh
+cd /Users/zz/Desktop/A4G
+uv sync --locked
+uv run --locked python run.py --use-authorized-deepseek-env
+```
+
+已有前端已构建；新环境按手册安装Node22并在src/frontend运行npm ci与npm run build。上述授权选项仅适用于当前本机既有DeepSeek凭据；新环境配置本机.env后不带该选项启动。打开 http://127.0.0.1:8018/ 。
+
+[本轮操作手册](docs/流式聊天升级/操作手册.md) · [源码架构与索引](docs/流式聊天升级/系统架构图.html) · [两页验证报告](docs/流式聊天升级/验证报告.pdf) · [交接状态](PROJECT_STATE.md)。35项Python与3项前端协议检查通过；本轮真实模型验证了三个流式路径、停止和上下文。BOS/显式规划、OCR、语义嵌入及外部服务联调仍未完成。
+
+## 以下为v0.3与v0.2历史说明
+
+当前布局、流式行为与启动以顶部及本轮手册为准；以下保留历史能力与账号等说明。
+
+
+题目保持：**基于 LangChain 的电力知识问答与辅助分析系统的设计与实现**。
+
+## v0.3.0 当前版本（2026-11-13）
+
+产品定位扩展为**电力知识、材料理解与只读任务草案**。原React布局保留，新增文字型PDF按页入库/来源/原件、LangGraph意图与澄清流程、SSE阶段事件、TaskContract草案校验及理解记录回看。草案不会自动执行，BOS与显式规划仍待接入。
+
+当前核心栈：React + TypeScript、FastAPI/SSE、LangChain + LangGraph、PyMuPDF、SQLite检查点与应用存储、uv.lock独立集成环境。提供可选Milvus/MinIO适配，未做服务联调；默认仍为字符哈希检索与本地原文件，不能声称已有预训练语义检索或OCR。
+
+```sh
+cd /Users/zz/Desktop/A4G
+uv sync --locked
+# 首次安装前端或修改前端后：cd src/frontend && npm ci && npm run build && cd ../..
+uv run --locked python run.py --use-authorized-deepseek-env
+```
+
+上述选项仅适用于本机已经授权且存在的环境凭据；新环境按空配置模板在本机 `.env` 设置 `AGENT_API_KEY` 后运行 `uv run --locked python run.py`。访问 http://127.0.0.1:8018/ 。完整安装、输入与预期结果见 [本轮操作手册](docs/上游升级/操作手册.md)，[源码架构与索引](docs/上游升级/系统架构图.html)，[两页验证报告](docs/上游升级/验证报告.pdf)，[接手状态](PROJECT_STATE.md)。
+
+本轮29项测试通过；另用新建合成教学PDF与线路表完成真实模型问答和草案验收。部署环境和业务真实性分别验证，不把教学成功当真实BOS验收。上游输出结构并非完整规划算法。
+
+## 以下为v0.2基础能力与历史说明
+
+新版本安装启动以顶部和本轮手册为准；以下保留旧账号、原有功能与历史边界供回查。
+
 
 当前题目：**基于 LangChain 的电力知识问答与辅助分析系统的设计与实现**。
 

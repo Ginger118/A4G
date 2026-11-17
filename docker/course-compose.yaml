@@ -1,0 +1,30 @@
+name: a4g-course
+services:
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.25
+    command: etcd --advertise-client-urls=http://etcd:2379 --listen-client-urls=http://0.0.0.0:2379 --data-dir=/etcd
+    volumes: [etcd_data:/etcd]
+  minio:
+    image: day6-minio:source-20250422
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ${AGENT_MINIO_ACCESS_KEY:?Run init first}
+      MINIO_ROOT_PASSWORD: ${AGENT_MINIO_SECRET_KEY:?Run init first}
+    ports: ["127.0.0.1:19100:9000", "127.0.0.1:19101:9001"]
+    volumes: [minio_data:/data]
+  milvus:
+    image: day6-milvus:2.6.15
+    command: [milvus, run, standalone]
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+      MINIO_ACCESS_KEY_ID: ${AGENT_MINIO_ACCESS_KEY}
+      MINIO_SECRET_ACCESS_KEY: ${AGENT_MINIO_SECRET_KEY}
+      MQ_TYPE: woodpecker
+    ports: ["127.0.0.1:19538:19530", "127.0.0.1:19191:9091"]
+    volumes: [milvus_data:/var/lib/milvus]
+    depends_on: [etcd, minio]
+volumes:
+  etcd_data:
+  minio_data:
+  milvus_data:

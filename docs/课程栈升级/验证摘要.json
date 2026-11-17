@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-15",
+  "version": "0.5.0",
+  "python_tests": 43,
+  "frontend_protocol_checks": 3,
+  "services": [
+    "MinIO",
+    "Milvus 2.6.15",
+    "Ollama EmbeddingGemma Q8_0 768维",
+    "DeepSeek"
+  ],
+  "synthetic_documents": 2,
+  "questions": 2,
+  "object_roundtrip": true,
+  "duplicate_upload": true,
+  "owner_isolation": true,
+  "document_scope": true,
+  "storage_restart": true,
+  "no_document_reembedding_on_search": true,
+  "scope": "两份合成教学资料；未评估通用检索质量或生产并发；研究规划/BOS/OCR待接"
+}

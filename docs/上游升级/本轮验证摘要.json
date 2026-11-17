@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-13",
+  "version": "0.3.0",
+  "automated_tests": {
+    "passed": 29,
+    "warnings": 5,
+    "scope": "旧20项+新增9项；独立数据库，明确模型替身"
+  },
+  "live_acceptance": {
+    "tested_at": "2026-11-13T09:51:02+0800",
+    "health": {
+      "status": "ok",
+      "version": "0.3.0"
+    },
+    "data_source": "本轮新建两页合成教学 PDF、Markdown 和三行教学线路表",
+    "real_model_pdf_qa": "passed",
+    "page_provenance": 2,
+    "real_model_plan_draft": "passed",
+    "plan_steps": 4,
+    "no_execution": true,
+    "qa_seconds": 3.123,
+    "plan_seconds": 0.961,
+    "unverified": [
+      "扫描页OCR",
+      "真实BOS",
+      "显式规划执行",
+      "MinIO/Milvus服务联调",
+      "预训练语义嵌入"
+    ]
+  },
+  "delegation": {
+    "model": "deepseek-v4-flash",
+    "input": "最小功能要求与边界，无源码、凭据、原始业务数据",
+    "result": "10条验收候选；主控采纳页码溯源、过度澄清、无成功done、无BOS假连接及草案不授权的检查原则",
+    "output": "ChatGPT项目本轮delegation/flash_result.json；未作为实测证据"
+  },
+  "known_limits": [
+    "OCR待接入",
+    "语义嵌入/混合检索待验证",
+    "MinIO/Milvus适配未服务联调",
+    "BOS/显式规划未接入",
+    "检查点落库不等于自动恢复任意中间节点"
+  ]
+}

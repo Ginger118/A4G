@@ -1,0 +1,512 @@
+[
+  {
+    "file": "src/backend/app/documents.py",
+    "symbol": "OriginalStore",
+    "line": 8,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/documents.py",
+    "symbol": "OriginalStore.__init__",
+    "line": 9,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/documents.py",
+    "symbol": "OriginalStore.put",
+    "line": 11,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/documents.py",
+    "symbol": "OriginalStore.get",
+    "line": 20,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/documents.py",
+    "symbol": "OriginalStore.client",
+    "line": 26,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/documents.py",
+    "symbol": "ingest_pdf",
+    "line": 31,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "EmbeddingUnavailable",
+    "line": 9,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "OllamaSemanticEmbeddings",
+    "line": 11,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "OllamaSemanticEmbeddings.__init__",
+    "line": 12,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "OllamaSemanticEmbeddings._embed",
+    "line": 24,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "OllamaSemanticEmbeddings.embed_query",
+    "line": 45,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "OllamaSemanticEmbeddings.embed_documents",
+    "line": 46,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "_semantic",
+    "line": 49,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "get_embeddings",
+    "line": 51,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/embeddings.py",
+    "symbol": "embedding_info",
+    "line": 56,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "embed",
+    "line": 24,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "LocalCharacterEmbeddings",
+    "line": 33,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "LocalCharacterEmbeddings.embed_query",
+    "line": 34,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "LocalCharacterEmbeddings.embed_documents",
+    "line": 37,
+    "kind": "method"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "chunk",
+    "line": 39,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "_documents",
+    "line": 41,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "publish_knowledge",
+    "line": 53,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "add_document",
+    "line": 76,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "vector_store_label",
+    "line": 94,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/rag.py",
+    "symbol": "search",
+    "line": 97,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/repositories/milvus.py",
+    "symbol": "collection_name",
+    "line": 5,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/repositories/milvus.py",
+    "symbol": "_client",
+    "line": 8,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/repositories/milvus.py",
+    "symbol": "_id",
+    "line": 12,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/repositories/milvus.py",
+    "symbol": "index_documents",
+    "line": 16,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/repositories/milvus.py",
+    "symbol": "delete_documents",
+    "line": 27,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/repositories/milvus.py",
+    "symbol": "search_vectors",
+    "line": 33,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/course_status.py",
+    "symbol": "inspect_stack",
+    "line": 4,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "lifespan",
+    "line": 27,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "headers",
+    "line": 37,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "actor",
+    "line": 45,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "Body",
+    "line": 52,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "Login",
+    "line": 55,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "login",
+    "line": 62,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "logout",
+    "line": 77,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "me",
+    "line": 83,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "health",
+    "line": 86,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "configuration",
+    "line": 89,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "knowledge_status",
+    "line": 110,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "assets",
+    "line": 115,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "Upload",
+    "line": 118,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "upload",
+    "line": 124,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "owned_asset",
+    "line": 140,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "asset_detail",
+    "line": 145,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "download",
+    "line": 150,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "seed",
+    "line": 156,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "TaskInput",
+    "line": 171,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "serialize_task",
+    "line": 178,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "create_task",
+    "line": 185,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "tasks",
+    "line": 211,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "conversation",
+    "line": 215,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "owned_task",
+    "line": 218,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "task_detail",
+    "line": 224,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "cancel",
+    "line": 227,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "trace",
+    "line": 239,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "Question",
+    "line": 246,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "ask",
+    "line": 251,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "Vision",
+    "line": 266,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "vision",
+    "line": 271,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "admin_summary",
+    "line": 289,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "PdfUpload",
+    "line": 299,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "upload_pdf",
+    "line": 304,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/main.py",
+    "symbol": "original_pdf",
+    "line": 312,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "parse_intent",
+    "line": 11,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "confirm_entities",
+    "line": 29,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "collect_missing_fields",
+    "line": 38,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "retrieve_evidence",
+    "line": 50,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "clarify",
+    "line": 57,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "compose_response",
+    "line": 60,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "finalize_contract",
+    "line": 82,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/graph.py",
+    "symbol": "build_upstream_graph",
+    "line": 93,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/upstream/service.py",
+    "symbol": "upstream_events",
+    "line": 8,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/llm.py",
+    "symbol": "ModelUnavailable",
+    "line": 5,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/llm.py",
+    "symbol": "completion",
+    "line": 8,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/llm.py",
+    "symbol": "json_content",
+    "line": 36,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/llm.py",
+    "symbol": "langchain_completion",
+    "line": 42,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/llm.py",
+    "symbol": "stream_completion",
+    "line": 72,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/streaming.py",
+    "symbol": "ChatInput",
+    "line": 11,
+    "kind": "ClassDef"
+  },
+  {
+    "file": "src/backend/app/streaming.py",
+    "symbol": "encode",
+    "line": 17,
+    "kind": "FunctionDef"
+  },
+  {
+    "file": "src/backend/app/streaming.py",
+    "symbol": "chat_events",
+    "line": 19,
+    "kind": "AsyncFunctionDef"
+  },
+  {
+    "file": "src/backend/app/streaming.py",
+    "symbol": "build_stream_router",
+    "line": 58,
+    "kind": "FunctionDef"
+  }
+]

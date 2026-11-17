@@ -58,6 +58,7 @@ def init():
         CREATE TABLE IF NOT EXISTS assets(id TEXT PRIMARY KEY, owner TEXT, name TEXT, kind TEXT, content TEXT, metadata TEXT, created TEXT);
         CREATE TABLE IF NOT EXISTS tasks(id TEXT PRIMARY KEY, owner TEXT, session_id TEXT, prompt TEXT, mode TEXT, status TEXT, state TEXT, result TEXT, error TEXT, created TEXT, updated TEXT);
         CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT, type TEXT, title TEXT, payload TEXT, created TEXT);
+        CREATE TABLE IF NOT EXISTS upstream_turns(id TEXT PRIMARY KEY, owner TEXT, session_id TEXT, question TEXT, response TEXT, created TEXT);
         CREATE TABLE IF NOT EXISTS messages(id TEXT PRIMARY KEY, owner TEXT, session_id TEXT, role TEXT, content TEXT, created TEXT);
         ''')
         con.execute("UPDATE tasks SET status='interrupted', error='服务重启，任务已中断。可重新提交。' WHERE status IN ('running','pending')")

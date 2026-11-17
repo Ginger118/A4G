@@ -1,0 +1,422 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="A4G" version="26.0.0" type="device">
+  <diagram id="a4g0" name="01 前期思路">
+    <mxGraphModel dx="1800" dy="1160" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1160" background="#F9FBFE">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="accent" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#245CD6;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="48" width="8" height="48" />
+        </mxCell>
+        <mxCell id="title" value="前期思路｜先做完整 Agent，再接显式规划" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=36;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="88" y="38" width="1652" height="58" />
+        </mxCell>
+        <mxCell id="subtitle" value="课程作品能够独立演示，同时保留后续课题实验的接入位置。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="88" y="102" width="1652" height="34" />
+        </mxCell>
+        <mxCell id="page" value="A4G  /  01     ·     2026-11-03     ·     实线：当前实现或已确定范围；虚线：后续研究设想" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=16;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1108" width="1680" height="28" />
+        </mxCell>
+        <mxCell id="root" value="基于 LangChain 的&#10;电力知识问答与辅助分析系统" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#EAF0FF;strokeColor=#245CD6;strokeWidth=2;dashed=0;fontColor=#245CD6;fontSize=28;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="690" y="490" width="420" height="164" />
+        </mxCell>
+        <mxCell id="rootCaption" value="当前：常规 Agent 基座&#10;后续：替换规划策略做对照实验" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="694" y="672" width="412" height="74" />
+        </mxCell>
+        <mxCell id="course" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#245CD6;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="180" width="500" height="230" />
+        </mxCell>
+        <mxCell id="courseHeading" value="01 课程目标" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#245CD6;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="94" y="194" width="452" height="42" />
+        </mxCell>
+        <mxCell id="course0" value="• 让老师看见真实 LangChain 调用" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="252" width="448" height="38" />
+        </mxCell>
+        <mxCell id="course1" value="• 对话、上传、切分、检索、工具调用" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="295" width="448" height="38" />
+        </mxCell>
+        <mxCell id="course2" value="• 从输入到引用答案／报告的完整闭环" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="338" width="448" height="38" />
+        </mxCell>
+        <mxCell id="domain" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#137F79;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="470" width="500" height="230" />
+        </mxCell>
+        <mxCell id="domainHeading" value="02 业务落点" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#137F79;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="94" y="484" width="452" height="42" />
+        </mxCell>
+        <mxCell id="domain0" value="• 以电力知识与线路表作为示例材料" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="542" width="448" height="38" />
+        </mxCell>
+        <mxCell id="domain1" value="• 代码计算负载比值，模型解释结果" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="585" width="448" height="38" />
+        </mxCell>
+        <mxCell id="domain2" value="• 无需先深入复杂电网业务" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="628" width="448" height="38" />
+        </mxCell>
+        <mxCell id="tech" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#7550BC;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="760" width="500" height="230" />
+        </mxCell>
+        <mxCell id="techHeading" value="03 技术抓手" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="94" y="774" width="452" height="42" />
+        </mxCell>
+        <mxCell id="tech0" value="• ChatDeepSeek：对话与工具选择" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="832" width="448" height="38" />
+        </mxCell>
+        <mxCell id="tech1" value="• 递归切分 + 向量检索：支撑 RAG" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="875" width="448" height="38" />
+        </mxCell>
+        <mxCell id="tech2" value="• 前端 React；后端 FastAPI + SQLite" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="96" y="918" width="448" height="38" />
+        </mxCell>
+        <mxCell id="product" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#137F79;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1230" y="180" width="500" height="230" />
+        </mxCell>
+        <mxCell id="productHeading" value="04 独立完整的产品" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#137F79;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1254" y="194" width="452" height="42" />
+        </mxCell>
+        <mxCell id="product0" value="• 登录与资源隔离；多轮对话" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="252" width="448" height="38" />
+        </mxCell>
+        <mxCell id="product1" value="• 知识文档上传、切分预览与引用问答" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="295" width="448" height="38" />
+        </mxCell>
+        <mxCell id="product2" value="• 线路 CSV 分析、执行轨迹与报告" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="338" width="448" height="38" />
+        </mxCell>
+        <mxCell id="research" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FAF7FF;strokeColor=#7550BC;strokeWidth=2;dashed=1;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1230" y="470" width="500" height="230" />
+        </mxCell>
+        <mxCell id="researchHeading" value="05 后续课题接入点" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1254" y="484" width="452" height="42" />
+        </mxCell>
+        <mxCell id="research0" value="• 现有 Planner 与 Executor 已分离" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="542" width="448" height="38" />
+        </mxCell>
+        <mxCell id="research1" value="• 待补：目标判据、动作前提与效果" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="585" width="448" height="38" />
+        </mxCell>
+        <mxCell id="research2" value="• 未来：显式规划 + 反馈更新 + 对照实验" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="628" width="448" height="38" />
+        </mxCell>
+        <mxCell id="boundary" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#A96C13;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1230" y="760" width="500" height="230" />
+        </mxCell>
+        <mxCell id="boundaryHeading" value="06 控制范围" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#A96C13;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1254" y="774" width="452" height="42" />
+        </mxCell>
+        <mxCell id="boundary0" value="• 优先讲清基础能力与真实调用链路" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="832" width="448" height="38" />
+        </mxCell>
+        <mxCell id="boundary1" value="• 当前只算给定有功限值的负载比值" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="875" width="448" height="38" />
+        </mxCell>
+        <mxCell id="boundary2" value="• 暂不做潮流、N−1 或真实调度" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1256" y="918" width="448" height="38" />
+        </mxCell>
+        <mxCell id="summary" value="从 A 到 B 的研究想法&#10;A：当前数据、产物与执行状态&#10;B：满足约束的一组可接受结果&#10;先留接口，当前不实现该规划算法" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F5F7FC;strokeColor=#D5DFEC;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="660" y="830" width="480" height="172" />
+        </mxCell>
+        <mxCell id="branchcourse" style="edgeStyle=none;rounded=1;html=0;strokeColor=#245CD6;strokeWidth=2.5;dashed=0;endArrow=none;exitX=0.0;exitY=0.5;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="root" target="course">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="690" y="572" />
+            <mxPoint as="targetPoint" x="570" y="295" />
+            <Array as="points">
+              <mxPoint x="630" y="572" />
+              <mxPoint x="630" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="branchdomain" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=none;exitX=0.0;exitY=0.5;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="root" target="domain">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="690" y="572" />
+            <mxPoint as="targetPoint" x="570" y="585" />
+            <Array as="points">
+              <mxPoint x="630" y="572" />
+              <mxPoint x="630" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="branchtech" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7550BC;strokeWidth=2.5;dashed=0;endArrow=none;exitX=0.0;exitY=0.5;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="root" target="tech">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="690" y="572" />
+            <mxPoint as="targetPoint" x="570" y="875" />
+            <Array as="points">
+              <mxPoint x="630" y="572" />
+              <mxPoint x="630" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="branchproduct" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=none;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="root" target="product">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1110" y="572" />
+            <mxPoint as="targetPoint" x="1230" y="295" />
+            <Array as="points">
+              <mxPoint x="1170" y="572" />
+              <mxPoint x="1170" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="branchresearch" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7550BC;strokeWidth=2.5;dashed=1;endArrow=none;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="root" target="research">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1110" y="572" />
+            <mxPoint as="targetPoint" x="1230" y="585" />
+            <Array as="points">
+              <mxPoint x="1170" y="572" />
+              <mxPoint x="1170" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="branchboundary" style="edgeStyle=none;rounded=1;html=0;strokeColor=#A96C13;strokeWidth=2.5;dashed=0;endArrow=none;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="root" target="boundary">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1110" y="572" />
+            <mxPoint as="targetPoint" x="1230" y="875" />
+            <Array as="points">
+              <mxPoint x="1170" y="572" />
+              <mxPoint x="1170" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="a4g1" name="02 系统架构">
+    <mxGraphModel dx="1800" dy="1440" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1440" background="#F9FBFE">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="accent" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#245CD6;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="48" width="8" height="48" />
+        </mxCell>
+        <mxCell id="title" value="系统架构｜三条业务路径，共用模型、工具与存储" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=36;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="88" y="38" width="1652" height="58" />
+        </mxCell>
+        <mxCell id="subtitle" value="当前实现与后续研究分开标注；图中模块属于同一个本地应用，不代表独立微服务。" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="88" y="102" width="1652" height="34" />
+        </mxCell>
+        <mxCell id="page" value="A4G  /  02     ·     2026-11-03     ·     实线：当前实现或已确定范围；虚线：后续研究设想" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=16;fontStyle=0;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1388" width="1680" height="28" />
+        </mxCell>
+        <mxCell id="ui" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#EAF0FF;strokeColor=#245CD6;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="160" width="1280" height="140" />
+        </mxCell>
+        <mxCell id="uiTitle" value="交互层 · React + TypeScript" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#245CD6;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="84" y="170" width="1232" height="38" />
+        </mxCell>
+        <mxCell id="uiText" value="多轮对话     ｜     文件与知识库     ｜     RAG 引用问答     ｜     工具分析、轨迹与报告" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=23;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="84" y="222" width="1232" height="54" />
+        </mxCell>
+        <mxCell id="provider" value="外部模型服务&#10;DeepSeek API" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E8F5F2;strokeColor=#137F79;strokeWidth=2;dashed=0;fontColor=#137F79;fontSize=26;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1380" y="160" width="360" height="140" />
+        </mxCell>
+        <mxCell id="api" value="服务入口 · FastAPI   /   登录会话、用户隔离、文件与任务接口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F4F7FC;strokeColor=#95A9C7;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="350" width="1280" height="92" />
+        </mxCell>
+        <mxCell id="adapter" value="共享文本模型适配&#10;ChatDeepSeek · ainvoke / bind_tools" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#E8F5F2;strokeColor=#137F79;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=19;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1380" y="350" width="360" height="92" />
+        </mxCell>
+        <mxCell id="modelNote" value="三个业务路径复用 llm.py" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=17;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1380" y="452" width="360" height="47" />
+        </mxCell>
+        <mxCell id="chatLane" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#245CD6;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="510" width="400" height="450" />
+        </mxCell>
+        <mxCell id="chatLaneTitle" value="① 多轮对话" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#245CD6;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="76" y="522" width="368" height="40" />
+        </mxCell>
+        <mxCell id="ragLane" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#137F79;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="500" y="510" width="400" height="450" />
+        </mxCell>
+        <mxCell id="ragLaneTitle" value="② 知识问答 / RAG" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#137F79;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="516" y="522" width="368" height="40" />
+        </mxCell>
+        <mxCell id="agentLane" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#7550BC;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="940" y="510" width="400" height="450" />
+        </mxCell>
+        <mxCell id="agentLaneTitle" value="③ Agent 工具分析" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="956" y="522" width="368" height="40" />
+        </mxCell>
+        <mxCell id="chatHistory" value="取出同一会话历史&#10;组合本轮提问" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F4F7FF;strokeColor=#C4D3F5;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=23;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="84" y="588" width="352" height="104" />
+        </mxCell>
+        <mxCell id="chatModel" value="调用 ChatDeepSeek&#10;保存并返回模型回答" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F4F7FF;strokeColor=#C4D3F5;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=23;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="84" y="744" width="352" height="104" />
+        </mxCell>
+        <mxCell id="chatFoot" value="普通对话不自动读取知识库或文件" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=17;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="84" y="875" width="352" height="50" />
+        </mxCell>
+        <mxCell id="ragSplit" value="文档上传 → 递归切分&#10;420 字符 / 60 字符目标重叠" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1FAF7;strokeColor=#B9DDD1;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="524" y="582" width="352" height="88" />
+        </mxCell>
+        <mxCell id="ragIndex" value="字符哈希嵌入 → 向量检索&#10;InMemoryVectorStore" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1FAF7;strokeColor=#B9DDD1;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="524" y="706" width="352" height="88" />
+        </mxCell>
+        <mxCell id="ragAnswer" value="问题 + 检索片段 → 模型回答&#10;附真实来源引用" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1FAF7;strokeColor=#B9DDD1;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="524" y="830" width="352" height="88" />
+        </mxCell>
+        <mxCell id="planner" value="Planner · 当前为 LLM Tool Calling&#10;decide(context) 选择下一步" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F3FF;strokeColor=#CCB8E8;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="964" y="588" width="352" height="104" />
+        </mxCell>
+        <mxCell id="executor" value="Executor · 统一执行&#10;权限、参数、超时与输出校验" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F3FF;strokeColor=#CCB8E8;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="964" y="776" width="352" height="104" />
+        </mxCell>
+        <mxCell id="decisionText" value="调用工具 / 结束&#10;或请求补充" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=16;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="708" width="150" height="56" />
+        </mxCell>
+        <mxCell id="agentFoot" value="真实结果 → 更新状态 → 下一轮" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=18;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="968" y="895" width="344" height="38" />
+        </mxCell>
+        <mxCell id="vision" value="图片理解 · 补充能力&#10;沿用独立模型 HTTP 适配&#10;与文本 LangChain 链路区分" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F4F7FC;strokeColor=#BECBDC;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1380" y="530" width="360" height="156" />
+        </mxCell>
+        <mxCell id="ragNote" value="实现口径&#10;嵌入为 2048 维字符哈希基线&#10;并非预训练语义模型&#10;原文与片段持久化&#10;内存索引可重建" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F4F7FC;strokeColor=#BECBDC;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=20;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1380" y="722" width="360" height="200" />
+        </mxCell>
+        <mxCell id="tools" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F5F2FC;strokeColor=#7550BC;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1020" width="1280" height="132" />
+        </mxCell>
+        <mxCell id="toolsTitle" value="工具层 · tools/power.py（当前四个轻量工具）" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=23;fontStyle=1;fontFamily=Helvetica;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1028" width="1240" height="34" />
+        </mxCell>
+        <mxCell id="inspect" value="读取线路 CSV" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#D2C4E9;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=22;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1075" width="292" height="56" />
+        </mxCell>
+        <mxCell id="analyze" value="计算负载比值" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#D2C4E9;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=22;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="392" y="1075" width="292" height="56" />
+        </mxCell>
+        <mxCell id="search" value="检索电力知识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#D2C4E9;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=22;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="704" y="1075" width="292" height="56" />
+        </mxCell>
+        <mxCell id="report" value="生成辅助报告" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#D2C4E9;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=22;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1016" y="1075" width="292" height="56" />
+        </mxCell>
+        <mxCell id="toolSearchLabel" value="知识检索复用" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#137F79;fontSize=15;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="750" y="963" width="155" height="24" />
+        </mxCell>
+        <mxCell id="store" value="本地存储 · SQLite + 本地文件&#10;用户与会话、原文与片段、任务状态、执行轨迹、分析产物与报告" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#EFF3F8;strokeColor=#8DA4C1;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=24;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1210" width="1280" height="126" />
+        </mxCell>
+        <mxCell id="storeCaption" value="三条业务路径共用持久化；向量索引在内存中按用户隔离" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#526581;fontSize=18;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1166" width="1240" height="32" />
+        </mxCell>
+        <mxCell id="future" value="" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FCF8FF;strokeColor=#7550BC;strokeWidth=2;dashed=1;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1380" y="976" width="360" height="360" />
+        </mxCell>
+        <mxCell id="futureTitle" value="后续研究 · 尚未接入" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#7550BC;fontSize=25;fontStyle=1;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1398" y="992" width="324" height="42" />
+        </mxCell>
+        <mxCell id="futureBody" value="目标描述 / GoalSpec&#10;动作前提、效果与失效条件&#10;显式规划 + 目标验收&#10;真实反馈更新状态&#10;&#10;保留相同工具与执行器&#10;替换 Planner 做对照实验" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;strokeWidth=2;dashed=0;fontColor=#172B4D;fontSize=21;fontStyle=0;fontFamily=Helvetica;align=center;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1400" y="1052" width="320" height="246" />
+        </mxCell>
+        <mxCell id="http" style="edgeStyle=none;rounded=1;html=0;strokeColor=#245CD6;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="ui" target="api">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="700" y="300" />
+            <mxPoint as="targetPoint" x="700" y="350" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sharedModel" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=block;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="api" target="adapter">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1340" y="396" />
+            <mxPoint as="targetPoint" x="1380" y="396" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="modelService" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=0.0;exitPerimeter=0;entryX=0.5;entryY=1.0;entryPerimeter=0;" edge="1" parent="1" source="adapter" target="provider">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1560" y="350" />
+            <mxPoint as="targetPoint" x="1560" y="300" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="routechatLane" style="edgeStyle=none;rounded=1;html=0;strokeColor=#95A9C7;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.15625;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="api" target="chatLane">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="260.0" y="442" />
+            <mxPoint as="targetPoint" x="260.0" y="510" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="routeragLane" style="edgeStyle=none;rounded=1;html=0;strokeColor=#95A9C7;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="api" target="ragLane">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="700.0" y="442" />
+            <mxPoint as="targetPoint" x="700.0" y="510" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="routeagentLane" style="edgeStyle=none;rounded=1;html=0;strokeColor=#95A9C7;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.84375;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="api" target="agentLane">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1140.0" y="442" />
+            <mxPoint as="targetPoint" x="1140.0" y="510" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="chatFlow" style="edgeStyle=none;rounded=1;html=0;strokeColor=#245CD6;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="chatHistory" target="chatModel">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="260" y="692" />
+            <mxPoint as="targetPoint" x="260" y="744" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="splitToIndex" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="ragSplit" target="ragIndex">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="700" y="670" />
+            <mxPoint as="targetPoint" x="700" y="706" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="indexToAnswer" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="ragIndex" target="ragAnswer">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="700" y="794" />
+            <mxPoint as="targetPoint" x="700" y="830" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="decision" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7550BC;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="planner" target="executor">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1140" y="692" />
+            <mxPoint as="targetPoint" x="1140" y="776" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="feedback" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7550BC;strokeWidth=2.5;dashed=0;endArrow=block;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="executor" target="planner">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1316" y="828" />
+            <mxPoint as="targetPoint" x="1316" y="640" />
+            <Array as="points">
+              <mxPoint x="1328" y="828" />
+              <mxPoint x="1328" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="executeTools" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7550BC;strokeWidth=2.5;dashed=0;endArrow=block;exitX=1.0;exitY=0.7115384615384616;exitPerimeter=0;entryX=0.84375;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="executor" target="tools">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1316" y="850" />
+            <mxPoint as="targetPoint" x="1140" y="1020" />
+            <Array as="points">
+              <mxPoint x="1328" y="850" />
+              <mxPoint x="1328" y="990" />
+              <mxPoint x="1140" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="toolSearch" style="edgeStyle=none;rounded=1;html=0;strokeColor=#137F79;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.4863013698630137;exitY=0.0;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;" edge="1" parent="1" source="search" target="ragIndex">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="846" y="1075" />
+            <mxPoint as="targetPoint" x="876" y="750" />
+            <Array as="points">
+              <mxPoint x="846" y="986" />
+              <mxPoint x="920" y="986" />
+              <mxPoint x="920" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="persist" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7188A7;strokeWidth=2.5;dashed=0;endArrow=block;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="tools" target="store">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="700" y="1152" />
+            <mxPoint as="targetPoint" x="700" y="1210" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="replacePlanner" style="edgeStyle=none;rounded=1;html=0;strokeColor=#7550BC;strokeWidth=2.5;dashed=1;endArrow=block;exitX=0.0;exitY=0.12222222222222222;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;" edge="1" parent="1" source="future" target="planner">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1380" y="1020" />
+            <mxPoint as="targetPoint" x="1140" y="588" />
+            <Array as="points">
+              <mxPoint x="1360" y="1020" />
+              <mxPoint x="1360" y="576" />
+              <mxPoint x="1140" y="576" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

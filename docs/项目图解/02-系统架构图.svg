@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1440" viewBox="0 0 1800 1440">
+<title>02 系统架构</title>
+<rect width="100%" height="100%" fill="#F9FBFE"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs>
+<rect x="60" y="48" width="8" height="48" rx="16" fill="#245CD6" stroke="none" stroke-width="2"/>
+<rect x="60" y="160" width="1280" height="140" rx="16" fill="#EAF0FF" stroke="#245CD6" stroke-width="2"/>
+<rect x="1380" y="160" width="360" height="140" rx="16" fill="#E8F5F2" stroke="#137F79" stroke-width="2"/>
+<rect x="60" y="350" width="1280" height="92" rx="16" fill="#F4F7FC" stroke="#95A9C7" stroke-width="2"/>
+<rect x="1380" y="350" width="360" height="92" rx="16" fill="#E8F5F2" stroke="#137F79" stroke-width="2"/>
+<rect x="60" y="510" width="400" height="450" rx="16" fill="#FFFFFF" stroke="#245CD6" stroke-width="2"/>
+<rect x="500" y="510" width="400" height="450" rx="16" fill="#FFFFFF" stroke="#137F79" stroke-width="2"/>
+<rect x="940" y="510" width="400" height="450" rx="16" fill="#FFFFFF" stroke="#7550BC" stroke-width="2"/>
+<rect x="84" y="588" width="352" height="104" rx="16" fill="#F4F7FF" stroke="#C4D3F5" stroke-width="2"/>
+<rect x="84" y="744" width="352" height="104" rx="16" fill="#F4F7FF" stroke="#C4D3F5" stroke-width="2"/>
+<rect x="524" y="582" width="352" height="88" rx="16" fill="#F1FAF7" stroke="#B9DDD1" stroke-width="2"/>
+<rect x="524" y="706" width="352" height="88" rx="16" fill="#F1FAF7" stroke="#B9DDD1" stroke-width="2"/>
+<rect x="524" y="830" width="352" height="88" rx="16" fill="#F1FAF7" stroke="#B9DDD1" stroke-width="2"/>
+<rect x="964" y="588" width="352" height="104" rx="16" fill="#F7F3FF" stroke="#CCB8E8" stroke-width="2"/>
+<rect x="964" y="776" width="352" height="104" rx="16" fill="#F7F3FF" stroke="#CCB8E8" stroke-width="2"/>
+<rect x="1380" y="530" width="360" height="156" rx="16" fill="#F4F7FC" stroke="#BECBDC" stroke-width="2"/>
+<rect x="1380" y="722" width="360" height="200" rx="16" fill="#F4F7FC" stroke="#BECBDC" stroke-width="2"/>
+<rect x="60" y="1020" width="1280" height="132" rx="16" fill="#F5F2FC" stroke="#7550BC" stroke-width="2"/>
+<rect x="80" y="1075" width="292" height="56" rx="16" fill="#FFFFFF" stroke="#D2C4E9" stroke-width="2"/>
+<rect x="392" y="1075" width="292" height="56" rx="16" fill="#FFFFFF" stroke="#D2C4E9" stroke-width="2"/>
+<rect x="704" y="1075" width="292" height="56" rx="16" fill="#FFFFFF" stroke="#D2C4E9" stroke-width="2"/>
+<rect x="1016" y="1075" width="292" height="56" rx="16" fill="#FFFFFF" stroke="#D2C4E9" stroke-width="2"/>
+<rect x="60" y="1210" width="1280" height="126" rx="16" fill="#EFF3F8" stroke="#8DA4C1" stroke-width="2"/>
+<rect x="1380" y="976" width="360" height="360" rx="16" fill="#FCF8FF" stroke="#7550BC" stroke-width="2" stroke-dasharray="9 7"/>
+<polyline points="700,300 700,350" fill="none" stroke="#245CD6" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1340,396 1380,396" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1560,350 1560,300" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="260.0,442 260.0,510" fill="none" stroke="#95A9C7" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="700.0,442 700.0,510" fill="none" stroke="#95A9C7" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1140.0,442 1140.0,510" fill="none" stroke="#95A9C7" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="260,692 260,744" fill="none" stroke="#245CD6" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="700,670 700,706" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="700,794 700,830" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1140,692 1140,776" fill="none" stroke="#7550BC" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1316,828 1328,828 1328,640 1316,640" fill="none" stroke="#7550BC" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1316,850 1328,850 1328,990 1140,990 1140,1020" fill="none" stroke="#7550BC" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="846,1075 846,986 920,986 920,750 876,750" fill="none" stroke="#137F79" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="700,1152 700,1210" fill="none" stroke="#7188A7" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="1380,1020 1360,1020 1360,576 1140,576 1140,588" fill="none" stroke="#7550BC" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="9 7" marker-end="url(#arrow)"/>
+<text x="88" y="81.03999999999999" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="36" font-weight="700" text-anchor="start" fill="#172B4D">系统架构｜三条业务路径，共用模型、工具与存储</text>
+<text x="88" y="126.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#526581">当前实现与后续研究分开标注；图中模块属于同一个本地应用，不代表独立微服务。</text>
+<text x="60" y="1408.24" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#526581">A4G  /  02     ·     2026-11-03     ·     实线：当前实现或已确定范围；虚线：后续研究设想</text>
+<text x="84" y="198.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#245CD6">交互层 · React + TypeScript</text>
+<text x="700.0" y="257.97" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="23" font-weight="400" text-anchor="middle" fill="#172B4D">多轮对话     ｜     文件与知识库     ｜     RAG 引用问答     ｜     工具分析、轨迹与报告</text>
+<text x="1560.0" y="220.38" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#137F79">外部模型服务</text>
+<text x="1560.0" y="259.9" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#137F79">DeepSeek API</text>
+<text x="700.0" y="405.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#172B4D">服务入口 · FastAPI   /   登录会话、用户隔离、文件与任务接口</text>
+<text x="1560.0" y="388.97" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#172B4D">共享文本模型适配</text>
+<text x="1560.0" y="417.85" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#172B4D">ChatDeepSeek · ainvoke / bind_tools</text>
+<text x="1560.0" y="482.13" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#526581">三个业务路径复用 llm.py</text>
+<text x="260.0" y="551.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#245CD6">① 多轮对话</text>
+<text x="700.0" y="551.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#137F79">② 知识问答 / RAG</text>
+<text x="1140.0" y="551.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#7550BC">③ Agent 工具分析</text>
+<text x="260.0" y="631.49" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="23" font-weight="400" text-anchor="middle" fill="#172B4D">取出同一会话历史</text>
+<text x="260.0" y="666.45" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="23" font-weight="400" text-anchor="middle" fill="#172B4D">组合本轮提问</text>
+<text x="260.0" y="787.49" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="23" font-weight="400" text-anchor="middle" fill="#172B4D">调用 ChatDeepSeek</text>
+<text x="260.0" y="822.45" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="23" font-weight="400" text-anchor="middle" fill="#172B4D">保存并返回模型回答</text>
+<text x="260.0" y="906.63" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#526581">普通对话不自动读取知识库或文件</text>
+<text x="700.0" y="618.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">文档上传 → 递归切分</text>
+<text x="700.0" y="649.0" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">420 字符 / 60 字符目标重叠</text>
+<text x="700.0" y="742.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">字符哈希嵌入 → 向量检索</text>
+<text x="700.0" y="773.0" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">InMemoryVectorStore</text>
+<text x="700.0" y="866.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">问题 + 检索片段 → 模型回答</text>
+<text x="700.0" y="897.0" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">附真实来源引用</text>
+<text x="1140.0" y="632.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">Planner · 当前为 LLM Tool Calling</text>
+<text x="1140.0" y="663.0" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">decide(context) 选择下一步</text>
+<text x="1140.0" y="820.23" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">Executor · 统一执行</text>
+<text x="1140.0" y="852.15" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">权限、参数、超时与输出校验</text>
+<text x="1045.0" y="730.0799999999999" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#7550BC">调用工具 / 结束</text>
+<text x="1045.0" y="754.4" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#7550BC">或请求补充</text>
+<text x="1140.0" y="921.0200000000001" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#7550BC">真实结果 → 更新状态 → 下一轮</text>
+<text x="1560.0" y="584.27" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">图片理解 · 补充能力</text>
+<text x="1560.0" y="616.1899999999999" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">沿用独立模型 HTTP 适配</text>
+<text x="1560.0" y="648.11" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">与文本 LangChain 链路区分</text>
+<text x="1560.0" y="769.0" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">实现口径</text>
+<text x="1560.0" y="799.4" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">嵌入为 2048 维字符哈希基线</text>
+<text x="1560.0" y="829.8" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">并非预训练语义模型</text>
+<text x="1560.0" y="860.2" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">原文与片段持久化</text>
+<text x="1560.0" y="890.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#172B4D">内存索引可重建</text>
+<text x="80" y="1053.97" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#7550BC">工具层 · tools/power.py（当前四个轻量工具）</text>
+<text x="226.0" y="1111.58" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="#172B4D">读取线路 CSV</text>
+<text x="538.0" y="1111.58" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="#172B4D">计算负载比值</text>
+<text x="850.0" y="1111.58" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="#172B4D">检索电力知识</text>
+<text x="1162.0" y="1111.58" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="22" font-weight="400" text-anchor="middle" fill="#172B4D">生成辅助报告</text>
+<text x="827.5" y="980.85" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="15" font-weight="400" text-anchor="middle" fill="#137F79">知识检索复用</text>
+<text x="700.0" y="1264.12" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#172B4D">本地存储 · SQLite + 本地文件</text>
+<text x="700.0" y="1300.6" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#172B4D">用户与会话、原文与片段、任务状态、执行轨迹、分析产物与报告</text>
+<text x="700.0" y="1189.02" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#526581">三条业务路径共用持久化；向量索引在内存中按用户隔离</text>
+<text x="1560.0" y="1022.75" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#7550BC">后续研究 · 尚未接入</text>
+<text x="1560.0" y="1087.43" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">目标描述 / GoalSpec</text>
+<text x="1560.0" y="1119.3500000000001" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">动作前提、效果与失效条件</text>
+<text x="1560.0" y="1151.27" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">显式规划 + 目标验收</text>
+<text x="1560.0" y="1183.19" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">真实反馈更新状态</text>
+<text x="1560.0" y="1215.1100000000001" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D"></text>
+<text x="1560.0" y="1247.0300000000002" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">保留相同工具与执行器</text>
+<text x="1560.0" y="1278.95" font-family="PingFang SC,Heiti SC,Arial Unicode MS,Arial,sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#172B4D">替换 Planner 做对照实验</text>
+</svg>
