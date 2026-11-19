@@ -67,6 +67,18 @@ def init():
         if not one('SELECT id FROM users WHERE username=?', (username,)):
             execute('INSERT INTO users VALUES(?,?,?,?)', (uid('usr'), username, password_hash('Agent2026!'), role))
 
+def register_phone(phone, password):
+    # A normalized phone shares the existing unique login identifier.
+    digest = password_hash(password)
+    with db() as con:
+        result = con.execute(
+            "INSERT INTO users(id,username,password,role) VALUES(?,?,?,'user') "
+            "ON CONFLICT(username) DO NOTHING",
+            (uid('usr'), phone, digest),
+        )
+        return result.rowcount == 1
+
+
 def asset(owner, name, kind, content, metadata=None):
     asset_id = uid('ast')
     meta = metadata or {}

@@ -3,15 +3,18 @@ import base64
 import hashlib
 import io
 import json
+import re
 import secrets
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Literal
 from fastapi import FastAPI, HTTPException, Request, Response, Depends
-from fastapi.responses import PlainTextResponse, FileResponse
+from fastapi.exceptions import RequestValidationError
+from fastapi.exception_handlers import request_validation_exception_handler
+from fastapi.responses import PlainTextResponse, FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, model_validator
 from PIL import Image, UnidentifiedImageError
 from .config import settings
 from . import storage as store, rag, llm
@@ -43,8 +46,7 @@ async def headers(request, call_next):
     return response
 
 async def actor(request: Request):
-    token=request.cookies.get('agent_session','')
-    digest=hashlib.sha256(token.encode()).hexdigest()
+    digest=session_digest(request)
     session=store.one('SELECT u.id,u.username,u.role FROM sessions s JOIN users u ON s.user_id=u.id WHERE s.token=? AND s.expires>?',(digest,time.time()))
     if not session: raise HTTPException(401,'请先登录，或登录已过期')
     return session
@@ -53,34 +55,92 @@ class Body(BaseModel):
     model_config=ConfigDict(extra='forbid')
 
 class Login(Body):
-    username: str=Field(min_length=1,max_length=60)
-    password: str=Field(min_length=1,max_length=200)
+    username: str | None = Field(default=None, min_length=1, max_length=60)
+    phone: str | None = Field(default=None, min_length=1, max_length=20)
+    password: str = Field(min_length=1, max_length=200)
 
-login_attempts={}
+    @model_validator(mode='after')
+    def one_identifier(self):
+        if (self.username is None) == (self.phone is None):
+            raise ValueError('请填写一个登录账号')
+        return self
+
+
+class Registration(Body):
+    phone: str = Field(min_length=1, max_length=20)
+    password: str = Field(min_length=8, max_length=200)
+
+
+PHONE_PATTERN = re.compile(r'1[3-9][0-9]{9}')
+login_attempts: dict[str, list[float]] = {}
+register_attempts: dict[str, list[float]] = {}
+
+
+def normalize_phone(value: str) -> str:
+    phone = value.strip().removeprefix('+86').strip()
+    if not PHONE_PATTERN.fullmatch(phone):
+        raise HTTPException(422, '请输入有效的中国大陆手机号')
+    return phone
+
+
+def public_user(user):
+    username = user['username']
+    if PHONE_PATTERN.fullmatch(username):
+        username = f'{username[:3]}****{username[-4:]}'
+    return {'id': user['id'], 'username': username, 'role': user['role']}
+
+
+def session_digest(request: Request) -> str:
+    return hashlib.sha256(request.cookies.get('agent_session', '').encode()).hexdigest()
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(request: Request, exc: RequestValidationError):
+    if request.url.path in {'/api/auth/login', '/api/auth/register'}:
+        return JSONResponse(status_code=422, content={'detail': '请检查账号与密码格式，注册密码须为 8 至 200 个字符'})
+    return await request_validation_exception_handler(request, exc)
+
+
+@app.post('/api/auth/register', status_code=201)
+async def register(body: Registration, request: Request):
+    phone = normalize_phone(body.phone)
+    ip = request.client.host if request.client else 'local'
+    now = time.time()
+    recent = [t for t in register_attempts.get(ip, []) if now-t < 60]
+    if len(recent) >= 6:
+        raise HTTPException(429, '注册尝试过于频繁，请一分钟后重试')
+    register_attempts[ip] = recent + [now]
+    if not store.register_phone(phone, body.password):
+        raise HTTPException(409, '这个手机号已注册，请直接登录')
+    return {'ok': True}
 
 @app.post('/api/auth/login')
 async def login(body: Login,request:Request,response:Response):
     ip=request.client.host if request.client else 'local'
     recent=[t for t in login_attempts.get(ip,[]) if time.time()-t<60]
     if len(recent)>=15: raise HTTPException(429,'登录尝试过于频繁，请一分钟后重试')
-    user=store.one('SELECT * FROM users WHERE username=?',(body.username,))
+    identifier = normalize_phone(body.phone) if body.phone is not None else body.username
+    user=store.one('SELECT * FROM users WHERE username=?',(identifier,))
     if not user or not store.password_verify(body.password,user['password']):
         login_attempts[ip]=recent+[time.time()]
-        raise HTTPException(401,'用户名或密码错误')
+        raise HTTPException(401,'账号或密码错误')
     login_attempts.pop(ip,None)
     token=secrets.token_urlsafe(32)
-    store.execute('INSERT INTO sessions VALUES(?,?,?)',(hashlib.sha256(token.encode()).hexdigest(),user['id'],time.time()+12*3600))
-    response.set_cookie('agent_session',token,httponly=True,samesite='strict',max_age=12*3600)
-    return {k:user[k] for k in ('id','username','role')}
+    with store.db() as con:
+        con.execute('DELETE FROM sessions WHERE token=?', (session_digest(request),))
+        con.execute('INSERT INTO sessions VALUES(?,?,?)',
+                    (hashlib.sha256(token.encode()).hexdigest(), user['id'], time.time()+12*3600))
+    response.set_cookie('agent_session', token, httponly=True, samesite='strict', max_age=12*3600)
+    return public_user(user)
 
 @app.post('/api/auth/logout')
 async def logout(request:Request,response:Response):
-    store.execute('DELETE FROM sessions WHERE token=?',(hashlib.sha256(request.cookies.get('agent_session','').encode()).hexdigest(),))
+    store.execute('DELETE FROM sessions WHERE token=?',(session_digest(request),))
     response.delete_cookie('agent_session')
     return {'ok':True}
 
 @app.get('/api/auth/me')
-async def me(user=Depends(actor)): return user
+async def me(user=Depends(actor)): return public_user(user)
 
 @app.get('/api/health')
 async def health(): return {'status':'ok','version':settings.version}
@@ -320,6 +380,9 @@ async def original_pdf(asset_id:str,user=Depends(actor)):
     try:raw=await asyncio.to_thread(original.get,key)
     except Exception:raise HTTPException(503,'原文件暂时不可用')
     return Response(raw,media_type='application/pdf' if key.endswith('.pdf') else 'text/plain; charset=utf-8',headers={'Content-Disposition':"inline; filename*=UTF-8''"+quote(a['name'])})
+
+from .evaluation import build_evaluation_router
+app.include_router(build_evaluation_router(actor))
 
 dist=settings.root/'src/frontend/dist'
 if dist.exists():

@@ -5,6 +5,7 @@ import ChatWorkspace from './components/ChatWorkspace';
 import {useTheme,ThemeToggle} from './theme';
 import './theme.css';
 import AccountPanel from './components/AccountPanel';
+import RetrievalDemo from './components/RetrievalDemo';
 
 type User = {id:string;username:string;role:string};
 type Asset = {id:string;name:string;kind:string;created:string;metadata:Record<string,any>;content?:string};
@@ -58,8 +59,103 @@ function Markdown({text}:{text:string}){
  return <div className="markdown">{output}</div>;
 }
 
-function App(){
+type Theme = 'dark'|'light';
+type AuthMode = 'phone'|'register'|'teaching';
+const authChangeKey = 'a4g-auth-change';
+
+function AuthScreen({theme,toggleTheme,onLogin}:{theme:Theme;toggleTheme:()=>void;onLogin:(user:User)=>void}) {
+ const [mode,setMode]=useState<AuthMode>('phone');
+ const [identifier,setIdentifier]=useState('');
+ const [password,setPassword]=useState('');
+ const [busy,setBusy]=useState(false);
+ const [error,setError]=useState('');
+ const [notice,setNotice]=useState('');
+ const registering=mode==='register', teaching=mode==='teaching';
+
+ function choose(next:AuthMode) {
+  setMode(next);
+  if (teaching || next==='teaching') setIdentifier(next==='teaching'?'demo':'');
+  setPassword(next==='teaching'?'Agent2026!':'');
+  setError('');
+  setNotice('');
+ }
+
+ async function submit(e:React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  if (busy) return;
+  setBusy(true);
+  setError('');
+  setNotice('');
+  try {
+   const value=identifier.trim();
+   if (registering) {
+    await api('/auth/register',{phone:value,password});
+    choose('phone');
+    setNotice('注册成功，请用手机号和密码登录。');
+   } else {
+    const identity=teaching?{username:value}:{phone:value};
+    onLogin(await api<User>('/auth/login',{...identity,password}));
+   }
+  } catch (e) {
+   setError(e instanceof Error?e.message:'操作未完成，请重试');
+  } finally {
+   setBusy(false);
+  }
+ }
+
+ return <div className="login-page">
+  <div className="login-theme"><ThemeToggle theme={theme} onToggle={toggleTheme}/></div>
+  <div className="login-story"><Brand/><div className="login-copy">
+   <span className="eyebrow light">FROM KNOWLEDGE TO ACTION</span>
+   <h1>让复杂任务，<br/>有序发生。</h1>
+   <p>连接电力知识、材料与任务，<br/>把一个目标，变成可追溯的行动。</p>
+   <div className="login-flow"><span><Icon name="file"/>业务数据</span><i/><span><Icon name="spark"/>智能编排</span><i/><span><Icon name="report"/>分析报告</span></div>
+  </div><span className="login-foot">序流 · 电力知识与辅助分析工作空间</span><div className="orb orb-one"/><div className="orb orb-two"/></div>
+  <div className="login-form-wrap"><form className="login-form" onSubmit={submit}>
+   <h2>{registering?'注册账号':teaching?'教学账号登录':'手机号登录'}</h2>
+   <label>{teaching?'用户名':'手机号'}
+    <input type={teaching?'text':'tel'} name="username" value={identifier} onChange={e=>setIdentifier(e.target.value)}
+     required maxLength={teaching?60:20} autoComplete="username" placeholder={teaching?'请输入教学账号':'请输入中国大陆手机号'} disabled={busy}/>
+   </label>
+   <label>密码<input type="password" name="password" value={password} onChange={e=>setPassword(e.target.value)}
+    required minLength={registering?8:1} maxLength={200} autoComplete={registering?'new-password':'current-password'}
+    placeholder={registering?'至少 8 个字符':'请输入密码'} disabled={busy}/></label>
+   {error&&<div className="inline-error" role="alert">{error}</div>}
+   {notice&&<p role="status">{notice}</p>}
+   <button className="primary login-submit" disabled={busy}>{busy?<span className="spinner"/>:<>{registering?'注册':'登录'}<Icon name="arrow"/></>}</button>
+   <div className="auth-options">
+    {mode!=='phone'&&<button type="button" disabled={busy} onClick={()=>choose('phone')}>手机号登录</button>}
+    {!registering&&<button type="button" disabled={busy} onClick={()=>choose('register')}>注册账号</button>}
+    {!teaching&&<button type="button" disabled={busy} onClick={()=>choose('teaching')}>教学账号登录</button>}
+   </div>
+   {teaching&&<div className="demo-login"><Icon name="shield"/><span>本地体验账号 <strong>demo</strong><br/>密码：Agent2026!</span></div>}
+  </form></div>
+ </div>;
+}
+
+function AuthRoot(){
  const [theme,toggleTheme]=useTheme();
+ const [user,setUser]=useState<User|null>(null);
+ const [checking,setChecking]=useState(true);
+ useEffect(()=>{
+  let current=true;
+  api<User>('/auth/me').then(value=>{if(current)setUser(value);}).catch(()=>{}).finally(()=>{if(current)setChecking(false);});
+  const reload=(event:StorageEvent)=>{if(event.key===authChangeKey)window.location.reload();};
+  window.addEventListener('storage',reload);
+  return ()=>{current=false;window.removeEventListener('storage',reload);};
+ },[]);
+
+ function updateUser(next:User|null){
+  setUser(next);
+  try {localStorage.setItem(authChangeKey,crypto.randomUUID());}catch{/* The active tab can still switch. */}
+ }
+
+ if(checking)return <div className="loading-screen"><Brand/><span className="spinner"/></div>;
+ if(!user)return <AuthScreen theme={theme} toggleTheme={toggleTheme} onLogin={updateUser}/>;
+ return <App key={user.id} user={user} theme={theme} toggleTheme={toggleTheme} onLogout={()=>updateUser(null)}/>;
+}
+
+function App({user,theme,toggleTheme,onLogout}:{user:User;theme:Theme;toggleTheme:()=>void;onLogout:()=>void}){
  const [accountOpen,setAccountOpen]=useState(false);
  const accountTrigger=useRef<HTMLElement|null>(null);
  function openAccount(e:React.MouseEvent<HTMLButtonElement>){accountTrigger.current=e.currentTarget;setAccountOpen(v=>!v);}
@@ -67,15 +163,14 @@ function App(){
  const [isNarrow,setIsNarrow]=useState(window.innerWidth<=760);
  useEffect(()=>{const resize=()=>setIsNarrow(window.innerWidth<=760);window.addEventListener('resize',resize);return()=>window.removeEventListener('resize',resize);},[]);
  const [sidebarCollapsed,setSidebarCollapsed]=useState(false),[workspaceEpoch,setWorkspaceEpoch]=useState(0),[workspaceSelection,setWorkspaceSelection]=useState<any>(null),[workspaceSeed,setWorkspaceSeed]=useState('');
- const [user,setUser]=useState<User|null>(null),[checking,setChecking]=useState(true);
- const [username,setUsername]=useState('demo'),[password,setPassword]=useState('Agent2026!'),[loginBusy,setLoginBusy]=useState(false);
- const [page,setPage]=useState<Page>('workspace'),[settings,setSettings]=useState<Settings|null>(null);
+ const [page,setPage]=useState<Page>(new URLSearchParams(window.location.search).get('view')==='knowledge'?'knowledge':'workspace'),[settings,setSettings]=useState<Settings|null>(null);
  const [assets,setAssets]=useState<Asset[]>([]),[tasks,setTasks]=useState<Task[]>([]),[task,setTask]=useState<Task|null>(null);
  const [taskType,setTaskType]=useState<'chat'|'analysis'|'upstream'>('chat');
  const [upstreamHistory,setUpstreamHistory]=useState<any[]>([]);
  const [upstream,setUpstream]=useState<any>(null),[upstreamStages,setUpstreamStages]=useState<string[]>([]),[upstreamAnswer,setUpstreamAnswer]=useState(''),[upstreamBusy,setUpstreamBusy]=useState(false),[upstreamSources,setUpstreamSources]=useState<any[]>([]);
  const [sceneRef,setSceneRef]=useState(''),[snapshotRef,setSnapshotRef]=useState('');
  const upstreamAbort=useRef<AbortController|null>(null);
+ useEffect(()=>()=>upstreamAbort.current?.abort(),[]);
  const [chatHistory,setChatHistory]=useState<{role:string;content:string}[]>([]);
  const [prompt,setPrompt]=useState(''),[dataset,setDataset]=useState(''),[mode,setMode]=useState<'live'|'demo'>('live');
  const [busy,setBusy]=useState(false),[toast,setToast]=useState(''),[error,setError]=useState('');
@@ -93,15 +188,18 @@ function App(){
  const announce=(message:string)=>{setToast(message);window.setTimeout(()=>setToast(''),4200);};
  const fail=(e:unknown)=>{setError(e instanceof Error?e.message:'操作未完成，请重试');};
  async function refresh(){const [a,t]=await Promise.all([api<Asset[]>('/assets'),api<Task[]>('/tasks')]);setAssets(a);setTasks(t);setUpstreamHistory(await api('/upstream/sessions'));return a;}
- useEffect(()=>{api<User>('/auth/me').then(setUser).catch(()=>{}).finally(()=>setChecking(false));},[]);
- useEffect(()=>{if(!user)return;Promise.all([api<Settings>('/settings'),refresh()]).then(([s,a])=>{setSettings(s);setMode(s.live_available?'live':'demo');if(a.some(x=>x.kind==='dataset'&&x.metadata.domain==='power'))setDataset(a.find(x=>x.kind==='dataset'&&x.metadata.domain==='power')!.id);}).catch(fail);},[user?.id]);
+ useEffect(()=>{Promise.all([api<Settings>('/settings'),refresh()]).then(([s,a])=>{setSettings(s);setMode(s.live_available?'live':'demo');if(a.some(x=>x.kind==='dataset'&&x.metadata.domain==='power'))setDataset(a.find(x=>x.kind==='dataset'&&x.metadata.domain==='power')!.id);}).catch(fail);},[user.id]);
  useEffect(()=>{if(!task)return;let disposed=false;const poll=async()=>{try{const t=await api<Task>('/tasks/'+task.id);if(disposed)return;setTask(t);if(!['pending','running'].includes(t.status))refresh().catch(fail);}catch(e){if(!disposed)fail(e);}};
   if(!active)return;const interval=window.setInterval(poll,1500);poll();return()=>{disposed=true;clearInterval(interval);};},[task?.id,active]);
  useEffect(()=>{setReport(null);const id=task?.state.report_id;if(id)api<Asset>('/assets/'+id).then(setReport).catch(fail);},[task?.state.report_id]);
  useEffect(()=>{window.scrollTo(0,0);},[page,task?.id]);
  useEffect(()=>{if(task?.state.task_type==='chat')api<{role:string;content:string}[]>('/conversations/'+task.session_id).then(setChatHistory).catch(fail);else setChatHistory([]);},[task?.id,task?.status]);
- async function login(e:React.FormEvent){e.preventDefault();setLoginBusy(true);setError('');try{setUser(await api('/auth/login',{username,password}));}catch(e){fail(e);}finally{setLoginBusy(false);}}
- async function logout(){setAccountOpen(false);try{await api('/auth/logout',{});setUser(null);setWorkspaceSelection(null);setWorkspaceSeed('');setWorkspaceEpoch(v=>v+1);setTask(null);setTasks([]);setAssets([]);setReport(null);setSession('');setAnswer(null);}catch(e){fail(e);}}
+ async function logout(){
+  try{
+   await api('/auth/logout',{});
+   onLogout();
+  }catch(e){fail(e);}
+ }
  async function seed(){setBusy(true);try{const a=await api<Asset[]>('/demo/seed',{});await refresh();setDataset(a.find(x=>x.kind==='dataset')?.id||'');announce('线路样例与电力知识已加入工作空间');}catch(e){fail(e);}finally{setBusy(false);}}
  async function upload(file:File|undefined,kind:'dataset'|'knowledge'){if(!file)return;setBusy(true);try{let a:Asset;if(kind==='knowledge'&&file.name.toLowerCase().endsWith('.pdf')){if(file.size>10_000_000)throw new Error('PDF 请控制在 10MB 内');const encoded=await new Promise<string>((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve((r.result as string).split(',')[1]);r.onerror=()=>reject(new Error('读取失败'));r.readAsDataURL(file);});a=await api<Asset>('/documents/pdf',{name:file.name,content_base64:encoded});}else{if(file.size>2_000_000)throw new Error('文本请控制在 2MB 内');const content=await file.text();a=await api<Asset>('/assets',{name:file.name,kind,content});}await refresh();if(kind==='dataset')setDataset(a.id);announce(kind==='knowledge'?'文档已切分并入库，可以立即检索':'数据已上传并完成格式校验');}catch(e){fail(e);}finally{setBusy(false);}}
  async function submitUpstream(){
@@ -140,9 +238,6 @@ function App(){
  const taskDuration=task?Math.max(0,(new Date(task.updated).getTime()-new Date(task.created).getTime())/1000):0;
  const download=(path:string)=>window.open('/api'+path,'_blank','noopener');
 
- if(checking)return <div className="loading-screen"><Brand/><span className="spinner"/></div>;
- if(!user)return <div className="login-page"><div className="login-theme"><ThemeToggle theme={theme} onToggle={toggleTheme}/></div><div className="login-story"><Brand/><div className="login-copy"><span className="eyebrow light">FROM KNOWLEDGE TO ACTION</span><h1>让复杂任务，<br/>有序发生。</h1><p>连接电力知识、材料与任务，<br/>把一个目标，变成可追溯的行动。</p><div className="login-flow"><span><Icon name="file"/>业务数据</span><i/><span><Icon name="spark"/>智能编排</span><i/><span><Icon name="report"/>分析报告</span></div></div><span className="login-foot">序流 · 电力知识与辅助分析工作空间</span><div className="orb orb-one"/><div className="orb orb-two"/></div><div className="login-form-wrap"><form className="login-form" onSubmit={login}><span className="eyebrow">YOUR WORKSPACE AWAITS</span><h2>欢迎来到序流</h2><p>登录后开始你的第一项智能任务。</p><label>用户名<input value={username} onChange={e=>setUsername(e.target.value)} autoComplete="username"/></label><label>密码<input type="password" value={password} onChange={e=>setPassword(e.target.value)} autoComplete="current-password"/></label>{error&&<div className="inline-error">{error}</div>}<button className="primary login-submit" disabled={loginBusy}>{loginBusy?<span className="spinner"/>:<>进入工作空间<Icon name="arrow"/></>}</button><div className="demo-login"><Icon name="shield"/><span>本地体验账号 <strong>demo</strong><br/>密码：Agent2026!</span></div><small>v0.6 · 课程知识工作空间</small></form></div></div>;
-
  return <div className={'app-shell '+(sidebarCollapsed?'nav-collapsed':'')}>
   {accountOpen&&<AccountPanel theme={theme} toggleTheme={toggleTheme} name={user.username==='demo'?'体验用户':user.username} avatarText={user.username.slice(0,1).toUpperCase()} workspaceLabel={user.role==='admin'?'管理员':'个人工作空间'} model={settings?.model||''} mode={mode} liveAvailable={!!settings?.live_available} busy={!!active} compact={sidebarCollapsed||isNarrow} onMode={setMode} onGuide={()=>{closeAccount();setGuide(true);}} onSettings={()=>{closeAccount();setPage('settings');setMobileNav(false);}} onLogout={()=>{closeAccount();logout();}} onClose={closeAccount}/>}
   <aside aria-hidden={sidebarCollapsed&&!mobileNav} className={'sidebar '+(mobileNav?'mobile-open':'')}>
@@ -156,7 +251,7 @@ function App(){
   <main className={'page-content '+(page==='workspace'?'workspace-page':'')}>
    {error&&<div className="error-banner" role="alert"><span>{error}</span><button onClick={()=>setError('')} aria-label="关闭错误"><Icon name="close" size={15}/></button></div>}
    {<div className="workspace-host" hidden={page!=='workspace'}><ChatWorkspace assets={assets} mode={mode} model={settings?.model||''} resetKey={workspaceEpoch} selection={workspaceSelection} seed={workspaceSeed} onBusy={setUpstreamBusy} onRefresh={refresh} onTask={setTask} onUpload={kind=>(kind==='knowledge'?knowledgeInput:datasetInput).current?.click()} onImage={()=>{setVisionOpen(true);setVisionResult(null);}} onSeed={seed} renderMarkdown={text=><Markdown text={text}/>}/></div>}
-   {page==='knowledge'&&<><div className="page-heading"><div><div className="eyebrow">KNOWLEDGE BASE</div><h1>让回答，有据可查<span className="heading-dot">.</span></h1><p>上传电力说明或课程资料，体验 LangChain 切分、检索与引用问答。</p></div><button className="primary" disabled={busy} onClick={()=>knowledgeInput.current?.click()}><Icon name="upload" size={16}/>导入知识</button></div><div className="knowledge-grid"><section className="card knowledge-docs"><div className="card-top"><span className="section-title">知识文档 <span className="count">{knowledge.length}</span></span><span className="small-label">TXT / Markdown / 文字型 PDF</span></div>{!knowledge.length?<div className="empty-state"><span className="large-icon"><Icon name="book" size={28}/></span><h3>添加第一份电力知识</h3><p>上传电力术语、数据说明或课程笔记。<br/>导入后即可检索，无需额外操作。</p><button className="secondary" onClick={seed} disabled={busy}>载入示例规范<Icon name="arrow" size={14}/></button></div>:knowledge.map(a=><button className="document-row" key={a.id} onClick={()=>api<Asset>('/assets/'+a.id).then(setPreview).catch(fail)}><span className="file-icon green"><Icon name="book" size={18}/></span><div><strong>{a.name}</strong><span>{a.metadata.chunk_count} 个知识片段 · {dateText(a.created)}</span></div><span className="indexed"><span className="status-dot"/>已入库</span></button>)}<div className="document-foot"><Icon name="shield" size={14}/>仅检索当前账号拥有的知识文档</div></section><section className="card qa-card"><div className="card-top"><span className="section-title"><Icon name="spark"/>知识问答</span><span className="small-label">检索 → 引用 → 回答</span></div><label className="sr-only" htmlFor="knowledge-question">知识问题</label><textarea id="knowledge-question" placeholder="例如：线路功率为负值时，应该如何计算比值？" value={question} onChange={e=>setQuestion(e.target.value)}/><div className="qa-submit"><span>{mode==='live'?'真实模型生成回答':'仅返回本地检索原文'}</span><button className="primary" onClick={ask} disabled={!question.trim()||asking}>{asking?<span className="spinner"/>:<Icon name="search" size={15}/>}到对话中提问</button></div>{answer&&<div className="qa-answer"><Markdown text={answer.answer}/><div className="citations"><span className="small-label">本次检索来源 · {answer.citations.length} 个片段</span>{answer.citations.map((h:any,i:number)=><details key={i}><summary><span className="citation-number">{i+1}</span>{h.document}<small>片段 {h.chunk_id}{h.page?` · 第 ${h.page} 页`:""}</small></summary><p>{h.text}</p></details>)}</div></div>}</section></div><div className="info-line"><Icon name="link" size={15}/>{settings?.retrieval} · 不足以证明答案正确时，应以原始文档为准。</div></>}
+   {page==='knowledge'&&<><div className="page-heading"><div><div className="eyebrow">KNOWLEDGE BASE</div><h1>让回答，有据可查<span className="heading-dot">.</span></h1><p>上传电力说明或课程资料，体验 LangChain 切分、检索与引用问答。</p></div><div className="retrieval-demo-actions"><button className="secondary" onClick={()=>document.getElementById('retrieval-demo')?.scrollIntoView({behavior:'smooth',block:'start'})}>召回演示</button><button className="primary" disabled={busy} onClick={()=>knowledgeInput.current?.click()}><Icon name="upload" size={16}/>导入知识</button></div></div><div className="knowledge-grid"><section className="card knowledge-docs"><div className="card-top"><span className="section-title">知识文档 <span className="count">{knowledge.length}</span></span><span className="small-label">TXT / Markdown / 文字型 PDF</span></div>{!knowledge.length?<div className="empty-state"><span className="large-icon"><Icon name="book" size={28}/></span><h3>添加第一份电力知识</h3><p>上传电力术语、数据说明或课程笔记。<br/>导入后即可检索，无需额外操作。</p><button className="secondary" onClick={seed} disabled={busy}>载入示例规范<Icon name="arrow" size={14}/></button></div>:knowledge.map(a=><button className="document-row" key={a.id} onClick={()=>api<Asset>('/assets/'+a.id).then(setPreview).catch(fail)}><span className="file-icon green"><Icon name="book" size={18}/></span><div><strong>{a.name}</strong><span>{a.metadata.chunk_count} 个知识片段 · {dateText(a.created)}</span></div><span className="indexed"><span className="status-dot"/>已入库</span></button>)}<div className="document-foot"><Icon name="shield" size={14}/>仅检索当前账号拥有的知识文档</div></section><section className="card qa-card"><div className="card-top"><span className="section-title"><Icon name="spark"/>知识问答</span><span className="small-label">检索 → 引用 → 回答</span></div><label className="sr-only" htmlFor="knowledge-question">知识问题</label><textarea id="knowledge-question" placeholder="例如：线路功率为负值时，应该如何计算比值？" value={question} onChange={e=>setQuestion(e.target.value)}/><div className="qa-submit"><span>{mode==='live'?'真实模型生成回答':'仅返回本地检索原文'}</span><button className="primary" onClick={ask} disabled={!question.trim()||asking}>{asking?<span className="spinner"/>:<Icon name="search" size={15}/>}到对话中提问</button></div>{answer&&<div className="qa-answer"><Markdown text={answer.answer}/><div className="citations"><span className="small-label">本次检索来源 · {answer.citations.length} 个片段</span>{answer.citations.map((h:any,i:number)=><details key={i}><summary><span className="citation-number">{i+1}</span>{h.document}<small>片段 {h.chunk_id}{h.page?` · 第 ${h.page} 页`:""}</small></summary><p>{h.text}</p></details>)}</div></div>}</section></div><div className="info-line"><Icon name="link" size={15}/>{settings?.retrieval} · 不足以证明答案正确时，应以原始文档为准。</div><RetrievalDemo key={user.id} request={api} knowledgeKey={knowledge.map(a=>a.id+':'+a.metadata.sha256).join('|')} onQuestion={q=>{setQuestion(q);document.getElementById('knowledge-question')?.focus();document.getElementById('knowledge-question')?.scrollIntoView({behavior:'smooth',block:'center'});}}/></>}
    {page==='files'&&<><div className="page-heading"><div><div className="eyebrow">FILES & ARTIFACTS</div><h1>材料与成果，一处管理<span className="heading-dot">.</span></h1><p>上传业务数据，查看知识文档与任务生成的报告。</p></div><button className="primary" disabled={busy} onClick={()=>datasetInput.current?.click()}><Icon name="upload" size={16}/>上传 CSV</button></div><section className="card files-card"><div className="files-toolbar"><span className="section-title">全部文件 <span className="count">{assets.length}</span></span><div className="search-input"><Icon name="search" size={15}/><input placeholder="搜索文件名称" value={fileSearch} onChange={e=>setFileSearch(e.target.value)}/></div></div>{!assets.length?<div className="empty-state"><span className="large-icon"><Icon name="file" size={28}/></span><h3>工作空间还没有文件</h3><p>上传线路运行 CSV，或载入示例材料开始体验。</p><button className="secondary" onClick={seed} disabled={busy}>载入示例材料<Icon name="arrow" size={14}/></button></div>:<div className="table-scroll"><table className="file-table"><thead><tr><th>文件名称</th><th>类型</th><th>内容</th><th>创建时间</th><th>操作</th></tr></thead><tbody>{assets.filter(a=>a.name.toLowerCase().includes(fileSearch.toLowerCase())).map(a=><tr key={a.id}><td><button className="file-name" onClick={()=>api<Asset>('/assets/'+a.id).then(setPreview).catch(fail)}><span className={'file-icon '+(a.kind==='knowledge'?'green':a.kind==='report'?'purple':'blue')}><Icon name={a.kind==='knowledge'?'book':a.kind==='report'?'report':'file'} size={17}/></span><strong>{a.name}</strong></button></td><td><span className={'file-type '+a.kind}>{a.kind==='dataset'?'业务数据':a.kind==='knowledge'?'知识文档':'分析报告'}</span></td><td>{a.metadata.row_count?`${a.metadata.row_count} 条记录`:a.metadata.chunk_count?`${a.metadata.chunk_count} 个片段`:'Markdown'}</td><td className="muted">{dateText(a.created)}</td><td><button className="icon-button" aria-label={'下载 '+a.name} onClick={()=>download('/assets/'+a.id+'/download')}><Icon name="download" size={16}/></button></td></tr>)}</tbody></table></div>}</section><div className="schema-guide"><Icon name="file" size={18}/><div><strong>线路数据格式</strong><p>CSV 包含 line_id、active_power_mw、limit_mw 三列。计算功率绝对值与限值的比值，单次最多 500 条；不涉及实际调度。</p></div></div></>}
    {page==='history'&&<>{upstreamHistory.length>0&&<section className="card"><div className="card-top"><span className="section-title">任务理解记录</span></div>{upstreamHistory.map(h=><button className="history-row" key={h.id} onClick={()=>{if(active){announce('请先停止当前生成');return;}setWorkspaceSelection({upstreamRecord:h});setWorkspaceSeed('');setWorkspaceEpoch(v=>v+1);setTask(null);setReport(null);setTaskType('upstream');setSession(h.session_id);setUpstream(h.response.contract);setUpstreamAnswer(h.response.answer);setUpstreamSources(h.response.sources);setUpstreamStages([]);setPage('workspace');}}><span className="file-icon purple"><Icon name="book"/></span><div><strong>{h.question}</strong><span>{dateText(h.created)} · 只读草案 · 尚未执行</span></div><Icon name="chevron"/></button>)}</section>}<div className="page-heading"><div><div className="eyebrow">EXECUTION HISTORY</div><h1>每次行动，都留有记录<span className="heading-dot">.</span></h1><p>回看任务过程、工具结果和最终产物。</p></div><button className="primary" onClick={newTask}><Icon name="plus" size={16}/>新建任务</button></div><section className="card"><div className="card-top"><span className="section-title">全部任务 <span className="count">{tasks.length}</span></span><span className="small-label">{successCount} 项已完成</span></div>{!tasks.length?<div className="empty-state"><span className="large-icon"><Icon name="history" size={28}/></span><h3>你的第一个目标，从这里开始</h3><p>创建任务后，你可以在这里回看完整执行过程。</p><button className="secondary" onClick={newTask}>前往工作台<Icon name="arrow" size={14}/></button></div>:tasks.map(t=><button className="history-row" key={t.id} onClick={()=>selectTask(t.id)}><span className="file-icon purple"><Icon name="spark" size={18}/></span><div><strong>{t.prompt}</strong><span>{dateText(t.created)} · {t.mode==='live'?'真实模型':'规则演示'} · {t.state.step||0} 次工具调用</span></div><span className={'status-badge '+t.status}>{statusText[t.status]}</span><Icon name="chevron" size={15}/></button>)}</section></>}
    {page==='settings'&&<><div className="page-heading"><div><div className="eyebrow">MODELS & TOOLS</div><h1>清晰的能力边界<span className="heading-dot">.</span></h1><p>查看模型配置、工具契约与执行约束。</p></div><span className="version-tag">v{settings?.version}</span></div><div className="settings-grid"><section className="card"><div className="card-top"><span className="section-title"><Icon name="spark"/>模型服务</span><span className={'status-badge '+(settings?.live_available?'succeeded':'waiting_input')}>{settings?.live_available?'已配置':'待配置'}</span></div><dl className="settings-list"><div><dt>应用框架</dt><dd>{settings?.framework} {settings?.framework_version} + LangGraph</dd></div><div><dt>模型适配</dt><dd>ChatDeepSeek</dd></div><div><dt>文档切分</dt><dd>{settings?.splitter}<br/>{settings?.chunk_size} 字符 / 重叠 {settings?.chunk_overlap}</dd></div><div><dt>向量检索</dt><dd>{settings?.vector_store}</dd></div><div><dt>原件存储</dt><dd>{settings?.object_store}</dd></div><div><dt>文本模型</dt><dd>{settings?.model}</dd></div><div><dt>视觉模型</dt><dd>{settings?.vision_model}</dd></div><div><dt>服务地址</dt><dd>{settings?.provider_host}</dd></div><div><dt>知识检索</dt><dd>{settings?.embedding}</dd></div></dl><div className="settings-note">密钥仅从后端环境配置读取，浏览器不接收密钥。修改配置后需重启后端。</div></section><section className="card"><div className="card-top"><span className="section-title"><Icon name="shield"/>执行边界</span></div><dl className="settings-list"><div><dt>最大工具调用</dt><dd>{settings?.max_steps} 次 / 任务</dd></div><div><dt>单次工具超时</dt><dd>{settings?.tool_timeout} 秒</dd></div><div><dt>执行权限</dt><dd>用户资源隔离</dd></div><div><dt>任务恢复</dt><dd>重启后标记中断，手动重试</dd></div></dl><div className="settings-note">当前工具只读取数据、产生派生文件，不提供删除文件、发送消息或执行任意代码的能力。</div></section></div><section className="card tools-card"><div className="card-top"><span className="section-title">已注册工具 <span className="count">{settings?.tools.length}</span></span><span className="small-label">统一注册 · 参数校验 · 执行留痕</span></div>{settings?.tools.map((t,i)=><details className="tool-detail" key={t.id}><summary><span className="tool-number">0{i+1}</span><div><strong>{t.name}<code>{t.id}</code></strong><p>{t.description}</p></div><Icon name="chevron" size={15}/></summary><pre>{JSON.stringify({input_schema:t.input_schema,output_schema:t.output_schema,timeout:t.timeout,version:t.version,preconditions:t.preconditions,effects:t.effects},null,2)}</pre></details>)}</section></>}
@@ -171,4 +266,4 @@ function App(){
  </div>;
 }
 
-createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
+createRoot(document.getElementById('root')!).render(<React.StrictMode><AuthRoot/></React.StrictMode>);

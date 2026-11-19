@@ -18,6 +18,6 @@ export default function AccountPanel(p:Props){
   <div className="account-model"><label htmlFor="account-model-mode">当前使用</label><strong>{p.mode==='live'?(p.model||'模型配置加载中'):'本地规则演示'}</strong><select id="account-model-mode" aria-label="模型运行方式" value={p.mode} disabled={p.busy} onChange={e=>p.onMode(e.target.value as 'live'|'demo')}><option value="live" disabled={!p.liveAvailable}>真实模型{p.model?' · '+p.model:''}</option><option value="demo">本地规则演示 · 不调用模型</option></select>{p.busy&&<small>任务进行中，结束后可切换</small>}</div>
   <button type="button" className="account-action" onClick={p.onSettings}><span aria-hidden="true">⚙</span>模型与工具<span aria-hidden="true">›</span></button>
   <div className="account-separator"/>
-  <button type="button" className="account-action account-logout" onClick={p.onLogout}>退出登录</button>
+  <button type="button" className="account-action account-logout" onClick={p.onLogout}>退出并切换账号</button>
  </div>;
 }

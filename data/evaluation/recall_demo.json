@@ -1,0 +1,103 @@
+{
+  "schema_version": "retrieval-demo.v1",
+  "suite_id": "power-kb-demo-v1",
+  "title": "电力知识召回演示",
+  "label_status": "demo_unreviewed",
+  "label_note": "按用户资料主题预置参考文档，未经专家审核；不是独立留出评估，不评价答案正确率。",
+  "top_k": 4,
+  "metric_unit": "document_over_top4_chunks",
+  "cases": [
+    {
+      "id": "D01",
+      "question": "集肤效应是什么，为什么导体内电流分布不均匀？",
+      "references": [
+        {
+          "title": "01_电路原理与电磁物理底座.md",
+          "sha256": "eff406bb9ff568ed70b5151f9274a81ff4f857022d34b7a70b765aa9cc02e129"
+        }
+      ],
+      "rationale": "集肤效应物理成因"
+    },
+    {
+      "id": "D02",
+      "question": "Kron降阶怎样消去不保留的节点？",
+      "references": [
+        {
+          "title": "02_工程数学与电网矩阵算法底座.md",
+          "sha256": "c5ffef5c3cdafd900e77984e5ba6df8e499ea562a28597276f9357d968e576c5"
+        }
+      ],
+      "rationale": "Kron降阶消元"
+    },
+    {
+      "id": "D03",
+      "question": "PQ、PV和平衡节点分别给定哪些量？",
+      "references": [
+        {
+          "title": "03_电力系统稳态分析_建模与潮流计算.md",
+          "sha256": "6bbbd14b8faa10e65a2d6d977f7b80e20a306955c90f5c8abff8be2523ec233f"
+        }
+      ],
+      "rationale": "三类潮流节点边界条件"
+    },
+    {
+      "id": "D04",
+      "question": "一次调频和二次调频有何区别？",
+      "references": [
+        {
+          "title": "04_电力系统稳态分析_调压调频与经济运行.md",
+          "sha256": "82c422852db32a4c29c11c4df41648419e8def12f5d16d2a5608e9f9ba4391d8"
+        }
+      ],
+      "rationale": "三级调频防线"
+    },
+    {
+      "id": "D05",
+      "question": "为什么同步发电机的次暂态电抗与暂态电抗不同？",
+      "references": [
+        {
+          "title": "05_电机学与电力系统暂态分析.md",
+          "sha256": "660ed33fd1d9925168d236859d4397e9f2ca3dfa4f1a8e609c78676e27f04b03"
+        }
+      ],
+      "rationale": "次暂态/暂态电抗演化"
+    },
+    {
+      "id": "D06",
+      "question": "数字化变电站的GOOSE与SV分别传输什么？",
+      "references": [
+        {
+          "title": "06_继电保护_数字化变电站与新能源构网控制.md",
+          "sha256": "d6ec241d4a856cd528aa1a7684f4e5e2f702fddf0061f2f00ce459d10d31777d"
+        }
+      ],
+      "rationale": "两网通信协议"
+    },
+    {
+      "id": "D07",
+      "question": "为什么CT二次侧不能开路，而PT二次侧不能短路？",
+      "references": [
+        {
+          "title": "07_高电压技术_发电厂电气部分与电力电子.md",
+          "sha256": "937c57cfe8d187d424a36c5f72c6a42b658862c5db14c2ad34b1b3b637e555e3"
+        }
+      ],
+      "rationale": "互感器二次侧约束"
+    },
+    {
+      "id": "D08",
+      "question": "请结合电力建模与专业英语资料，说明PQ、PV和平衡节点及其英文名称。",
+      "references": [
+        {
+          "title": "03_电力系统稳态分析_建模与潮流计算.md",
+          "sha256": "6bbbd14b8faa10e65a2d6d977f7b80e20a306955c90f5c8abff8be2523ec233f"
+        },
+        {
+          "title": "08_电力系统专业英语核心词典与顶刊语料库.md",
+          "sha256": "54ac766a5d12842157eca1504ecbba0553f4fbab08bada08420c478cb58c03b7"
+        }
+      ],
+      "rationale": "建模说明和专业英语词典两个参考来源"
+    }
+  ]
+}
